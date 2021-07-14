@@ -1,0 +1,64 @@
+.dest-banner {
+    @extend .taxi-banner;
+    background: transparent url('../assets/frank-park-QQRC1nHJSJY-unsplash.png') center 0% no-repeat padding-box !important;
+    background-size: cover;
+    object-fit: cover;
+    object-position: center;
+    h3,p {
+        color: #ffffff !important;
+    }
+}
+
+.top {
+    h3 {
+        font-size: 32px;
+        font-weight: 600;
+        color: $primary_clr_1;
+    }
+    .top-dest {
+        .card {
+            .botts {
+                height: 371px;
+                background: url('../assets/Group 231.png') center left;
+                background-size: cover;
+            }
+        }
+        .next-icon {
+            position: absolute;
+            top: 150px;
+            right: -30px;
+        }
+    }
+}
+
+.dest-benefits {
+    @extend .benefits;
+    display: block !important;
+    h3 {
+        font-size: 32px;
+        font-weight: 600;
+        color: $primary_clr_1;
+        text-align: left !important;
+        margin-bottom: 1em;
+    }
+    img {
+        width: 32px;
+        height: 24px;
+    }
+}
+
+@media only screen and (max-width: 520px){
+    .top {
+        h3 {
+            font-size: 28px;
+        }
+    }
+    .dest-benefits {
+        h3 {
+            font-size: 28px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+}

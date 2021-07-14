@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Success</title>
+</head>
+<body>
+<p>Your payment for {{ item_name }} is {{ status_msg }}. Confirm the details as follows</p>
+
+{{ context }}
+
+</body>
+{%  endblock %}

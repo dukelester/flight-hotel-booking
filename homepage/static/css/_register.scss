@@ -1,0 +1,112 @@
+/* Register Page Styles */
+.register-header {
+    height: 150px;
+    background: $accent_clr;
+}
+.register-form-area {
+    min-height: 500px;
+    .wrapper {
+        height: auto;
+        width: 500px;
+        //border: 1px solid $primary_clr_1;
+        p{
+            font-size: 16px;
+            font-weight: 300;
+            color: $primary_clr_1;
+        }
+        .upper-text {
+            h3 {
+                font-size: 28px;
+                font-weight: 600;
+                color: $primary_clr_1;
+            }
+        }
+        form {
+            label {
+                font-size: 16px;
+                font-weight: 600;
+                color: $primary_clr_1;
+            }
+            input {
+                height: 40px;
+                border: 2px solid #b6b6b6;
+                border-radius: 5px;
+                outline: none;
+            }
+            button {
+                background-color: $accent_clr;
+                width: 100%;
+                height: 40px;
+                border-radius: 5px;
+                margin-top: 2em !important;
+                margin-bottom: 1em !important;
+            }
+        }
+        .lower-text {
+            .options {
+                position: relative;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 12px;
+                    left: -40%;
+                    width: 74px;
+                    height: 2px;
+                    background: #a1a1a1;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 12px;
+                    right: -40%;
+                    width: 74px;
+                    height: 2px;
+                    background: #a1a1a1;
+                }
+            }
+            img {
+               width: 28px !important;
+               height: 28px !important;
+               object-fit: cover; 
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .register-form-area {
+        .wrapper {
+            p{
+                font-size: 15px;
+            }
+            .upper-text {
+                h3 {
+                    font-size: 24px;
+                    font-weight: 600;
+                    color: $primary_clr_1;
+                }
+            }
+            form {
+                label {
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: $primary_clr_1;
+                }
+            }
+            .lower-text {
+                .options {
+                    &::before {
+                        top: 12px;
+                        left: -30%;
+                        width: 44px;
+                    }
+                    &::after {
+                        top: 12px;
+                        right: -30%;
+                        width: 44px;
+                    }
+                }
+            }
+        }
+    }
+}

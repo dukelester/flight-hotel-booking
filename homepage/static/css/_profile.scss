@@ -1,0 +1,132 @@
+
+
+.profile-panel {
+    min-height: auto;
+    .tab-links {
+        li {
+            color: #afafaf;
+            font-size: 24px;
+            font-weight: 600;
+            transition: all .5s ease-in-out;
+            &::hover {
+                color: $primary_clr_1 !important;
+            }
+        }
+        .profile-active {
+            color: $primary_clr_1 !important;
+        }
+    }
+
+    .profile {
+        .card {
+            background: $primary_clr_2;
+            width: 100% !important;
+            img {
+                width: 120px;
+                height: 120px;
+                border: 1px solid #0C438C;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            form {
+                h4 {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: $primary_clr_1;
+                }
+                input {
+                    height: 40px;
+                    border-radius: 5px;
+                    outline: none;
+                    &::placeholder {
+                        padding-left: 20px;
+                    }
+                }
+                label {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $primary_clr_1;
+                }
+            }
+        }
+    }
+
+    .booking {
+        .card {
+            background: $primary_clr_2;
+            .location {
+                position: relative;
+                padding: 0 initial !important;
+                overflow: hidden !important;
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+                .overlay {
+                    position: absolute;
+                    bottom: 0 !important;
+                    right: 0 !important;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 255, 0.123);
+                    z-index: 20;
+                }
+                .txt {
+                    z-index: 40;
+                    h3 {
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: $txt_clr_light;
+                    }
+                    p {
+                        font-size: 16px;
+                        font-weight: 300 !important;
+                        color: $txt_clr_light;
+                    }
+                }
+            }
+            img {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+            }
+            h4 {
+                font-size: 20px;
+                font-weight: 600;
+                color: $primary_clr_1;
+            }
+            h3 {
+                font-size: 22px;
+                font-weight: 600;
+                color: $primary_clr_1;
+            }
+            p {
+                font-size: 16px;
+                font-weight: 300 !important;
+                color: $primary_clr_1;
+            }
+        }
+    }
+    .setting {
+        @extend .profile;
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: $primary_clr_1;
+        }
+        p {
+            font-size: 16px;
+            font-weight: 600;
+            color: $primary_clr_1;
+            width: 50%;
+        }
+        form {
+            width: 40%;
+        }
+    }
+}

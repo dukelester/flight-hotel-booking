@@ -1,0 +1,163 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% for bookcontext in bookcontext %}
+
+    <!--Confirmation Panel-->
+    <div class="confirm-panel px-10 lg:px-24 sm:px-10 md:px-10 py-10">
+        <div class="top-card p-5">
+            <h5>{{  bookcontext.firstname }}</h5>
+            <h3>Your booking is confirmed</h3>
+            <div class="flex items-center justify-between mt-4">
+                <div class="txt space-y-4">
+                    <div class="flex">
+                        <span class="mr-3"><i class="fas fa-check"></i></span>
+                        <p>We sent your confirmation email to {{ bookcontext.email }}</p>
+                    </div>
+                    <div class="flex">
+                        <span class="mr-3"><i class="fas fa-check"></i></span>
+                        <p>You can Manually <a href="#cancel" class="text-blue-500">Cancel</a>
+                        your booking until check-in
+                        </p>
+                    </div>
+                </div>
+                <div class="icons space-y-3">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="details mt-10">
+            <h3 class="mb-4">Check your details</h3>
+
+            <div class="inner grid">
+                <div class="card p-5">
+                    <h4 class="mb-5">First Name: {{ bookcontext.firstname}}</h4>
+                    <span class="grid grid-cols-2 mb-1">
+                        <h5>confirmation number:</h5>
+                        <p>{{ bookcontext.confirmationID }}</p>
+                    </span>
+                    <span class="grid grid-cols-2 mb-1">
+                        <h5>provider Confirmation Id:</h5>
+                        <p>{{ bookcontext.providerConfirmationId }}</p>
+                    </span>
+                    <span class="grid grid-cols-2 mb-1">
+<!--                        <h5>Booking Details:</h5>-->
+<!--                        <p>1 night, 1 room</p>-->
+                    </span><br>
+                    <span class="grid grid-cols-2 mb-1">
+                        <h5>You booked for:</h5>
+                        <p>{{ bookcontext.guests }} guests</p>
+                    </span>
+                    <span class="grid grid-cols-2 mb-1">
+                        <h5>Check-in:</h5>
+                        <p>{{ bookcontext.checkindate }}</p>
+                    </span>
+                    <span class="grid grid-cols-2 mb-1">
+                        <h5>Check-out:</h5>
+                        <p>{{ bookcontext.checkout }}</p>
+                    </span>
+                    <span class="grid grid-cols-2 mb-1">
+                        <h5>Arrival time:</h5>
+                        <a href="#cancel" class="text-blue-600">Shedule a time with your host</a>
+                    </span>
+                    <span class="flex justify-between mb-1 mt-8">
+                        <p>1 room</p>
+                        <p></p>
+                    </span>
+<!--                    <span class="flex justify-between mb-1">-->
+<!--                        <p>14% VAT</p>-->
+<!--                        <p>KES 738</p>-->
+<!--                    </span>-->
+<!--                    <span class="flex justify-between mb-1">-->
+<!--                        <p>2% City tax</p>-->
+<!--                        <p>KES 111</p>-->
+<!--                    </span>-->
+                    <span class="grid grid-cols-2 mb-1 mt-8">
+                        <div class="block space-y-2">
+                            <h4>Price</h4>
+                            <p>Base: {{ bookcontext.base }}</p>
+                            <p>Tax :{{ bookcontext.tax }} </p>
+                            <p>Total :{{ bookcontext.currency }} {{ bookcontext.total }}</p>
+                        </div>
+<!--                        <div class="flex space-x-3">-->
+<!--                            <p>Approx.</p>-->
+<!--                            <h4></h4>-->
+<!--                        </div>-->
+                    </span>
+                </div>
+                <div class="right p-5 space-y-4">
+                    <h5>Is everything correct?</h5>
+                    <p class="opt-txt">You can always cancel your booking. Checkout the house the cancelation policy in the Cancelation section:</p>
+                    <a href="#cancel" class="text-blue-700 font-bolder">View cancelation policy </a>
+<!--
+                    <button>View Booking</button>
+<!--                    <p>Tip: You can make changes to this booking any time</p>-->
+                </div>
+            </div>
+
+        </div>
+        <div id="cancel" class="property mt-10">
+            <h3 class="mb-4">Property details</h3>
+
+            <div class="card p-5 space-y-2">
+                <span class="grid grid-cols-2 mb-1">
+                    <h5>Address:</h5>
+                    <p>{{bookcontext.name}} <br/>{{ line }}<br/> {{ bookcontext.cityname }}</p>
+                </span>
+                <span class="grid grid-cols-2 mb-1">
+                    <h5>Getting ino the property:</h5>
+                    <p>The keys are a the on-site reception</p>
+                </span>
+                <span class="grid grid-cols-2 mb-1">
+                    <h5>Phone:</h5>
+                    <p>{{ bookcontext.phone }} </p>
+                </span>
+                <span class="grid grid-cols-2 mb-1">
+                    <h5>GPS coordinates:</h5>
+                    <div class="block space-y-4">
+                        <p>E {{ bookcontext.latitude }},  S{{ bookcontext.longitude}}</p>
+<!--                        <a href="#"  class="text-blue-600">Show directions</a>-->
+                    </div>
+                </span>
+                <span class="grid grid-cols-2 mb-1">
+                    <h5>Guest name:</h5>
+                    <p>{{ bookcontext.firstname }} {{ bookcontext.lastname }}</p>
+                </span>
+
+                <span  class="grid grid-cols-2 mb-1">
+
+                    <h5>Cancellation :</h5>
+
+                    <p>Deadline:{{ bookcontext.cancellation.deadline }}</p>
+                    <p> {{ bookcontext.cancellation.description.text }}</p>
+
+
+
+                </span>
+
+            </div>
+        </div>
+        <div class="tips mt-10">
+            <h3 class="mb-4">Tips and House rules</h3>
+            <div class="card space-y-4 p-5">
+                <p>You picked a great place to stay for your trip. You will get more privacy, more space and have a home away from home that is all yours.</p>
+<!--                <p>All children are welcome and pets are allowed at no extra charges</p>-->
+                <h5>If you still have questions or any urgent issues, your host will be happy to help. Feel free to contact them directly at
+                    {{ bookcontext.phone}}</h5>
+            </div>
+        </div>
+
+
+    </div>
+
+
+{% endfor %}
+
+  <!--FORM VALIDATION SCRIPT-->
+
+
+
+{% endblock %}

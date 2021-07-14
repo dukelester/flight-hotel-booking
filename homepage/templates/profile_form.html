@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="app">
+        <!--Nav Area-->
+        <div class="main-nav px-24 flex flex-col justify-end">
+            <div class="top-section flex items-center justify-between">
+                <span class="logo text-white text-xl font-light"><a href="homepage.html">sky-<span class="text-xl font-extrabold">Swift</span></a></span>
+                <div class="details flex justify-between">
+                    <button class="call-btn mr-8">Call Center</button>
+                    <div class="bell-icon mr-8">
+                        <span><i class="far fa-bell"></i></i></span>
+                        <div class="notification">1</div>
+                    </div>
+                    <a href="./profile.html" class="profile-link">
+                        <div class="user flex items-center justify-center">
+                            <img src="{% static 'css/assets/user.jpg' %}" alt="" class="user-img">
+                            <span class="name text-white ml-2"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <nav class="flex mt-12 justify-start">
+                <a href="homepage.html" class="pb-3 mr-16 font-light flex nav-active"><img src="{% static 'css/assets/assets/XMLID_874_.svg' %}" alt=""><span class="ml-4">Rest</span></a>
+                <a href="../../flights/templates/flights.html" class="pb-3 mr-16 font-light flex nav-active"><img src="{% static 'css/assets/assets/airplane.svg' %}" alt=""><span class="ml-4 mt-1">Flights</span></a>
+                <a href="../../carhire/templates/hire.html" class="pb-3 mr-16 font-light flex nav-active"><img src="{% static 'css/assets/assets/car.svg' %}" alt=""><span class="ml-4 mt-1">Car Hire</span></a>
+                <a href="../../taxis/templates/taxi.html" class="pb-3 mr-16 font-light flex nav-active"><img src="{% static 'css/assets/taxi-sign.svg' %}" alt=""><span class="ml-4 mt-1">Taxis</span></a>
+                <a href="../../destinations/templates/destination.html" class="pb-3 mr-16 font-light flex nav-active"><img src="{% static 'css/assets/route.svg' %}" alt=""><span class="ml-4 mt-1">Destinations</span></a>
+            </nav>
+        </div>
+
+        <!--Panel Area-->
+
+
+        <div class="profile-panel px-24 py-6 pb-10">
+            <!--Tabs-->
+            <ul class="tab-links flex justify-start space-x-20 mb-3">
+                <li @click="currentTab=1" class="cursor-pointer" :class="{'profile-active': currentTab==1}">My Profile</li>
+                <li @click="currentTab=2" class="cursor-pointer" :class="{'profile-active': currentTab==2}">My Bookings</li>
+                <li @click="currentTab=3" class="cursor-pointer" :class="{'profile-active': currentTab==3}">Settings</li>
+            </ul>
+
+            <!--Actual tabs-->
+            <div v-show="currentTab==1" class="profile">
+                <div class="card flex flex-col space-x-4 py-4 px-10">
+                    <img src="{% static 'css/assets/user.jpg' %}" alt="" class="top-user-img">
+
+            <div v-show="currentTab==2" class="booking">
+                <div class="card flex flex-col py-4 px-10">
+                    <div class="location flex flex-col space-y-4 bg-white justify-center items-center p-8">
+                        <h3>Nairobi</h3>
+                        <p>Nov 20 - Nov 21</p>
+                    </div>
+                    <div class="details flex items-center justify-between mt-5">
+                        <div class="hotel m-0 p-0 flex justify-center items-center space-x-4">
+                            <img src="{% static 'css/assets/2016-06-07_DosInglesesPier_ROW11721373925_1920x1080.png' %}" alt="">
+                            <div class="hotel-details">
+                                <h4>Empolos Hotel Nairobi</h4>
+                                <p>Nov 20 - Nov 21</p>
+                                <p class="mt-2">Non-refundable</p>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <h3>KES 5, 514</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-show="currentTab==3" class="setting">
+                <div class="card flex flex-col space-x-4 py-4 px-10">
+
+{% endblock %}

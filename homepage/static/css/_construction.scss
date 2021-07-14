@@ -1,0 +1,19 @@
+.soon {
+    height: 100vh;
+    background: $accent_clr;
+    h2 {
+        font-size: 8em;
+        font-weight: 600;
+        color: $txt_clr_light;
+    }
+    p {
+        font-size: 24px;
+        font-weight: 600;
+        color: $txt_clr_light;
+    }
+    span {
+        font-size: 3em;
+        font-weight: 300;
+        color: $txt_clr_lighter;
+    }
+}

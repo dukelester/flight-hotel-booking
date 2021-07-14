@@ -1,0 +1,25 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block title %}{{ title }} | {% trans "Sky Swift" %}{% endblock %}
+{% block extrastyle %}
+
+     <link rel="stylesheet" type="text/css" href="{% static 'css/admin_color.css' %}"/>
+
+
+{% endblock %}
+
+{% block branding %}
+
+ <h1 id="head">
+     {% if request.user.is_admin %}
+        <img src="{% static 'images/skyswiftlogo.png' %}" width="75px" height="75px">
+        Sky-Swift Admin
+     {% else %}
+     Sky-Swift
+     {% endif %}
+
+    </h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

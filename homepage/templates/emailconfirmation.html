@@ -1,0 +1,35 @@
+
+ {% autoescape off %}
+ <!DOCTYPE html>
+ <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+ <style>
+  background-color:#F06400;
+ </style>
+</head>
+ <body>
+ <h1>REGISTRATION</h1>
+
+
+<p >
+Welcome to sky-swift.com and thank you for registering with us.
+You created an account with the email address {{email}}.
+Click “Confirm” to verify the email address.</p>
+<a href="{{ url }}">
+ Confirm Email
+</a>
+If the button does not work please click on the link below.<br>
+ {{ url }}<br>
+If it was not you who submitted this email address, simply ignore this email.
+
+Kind Regards
+ <p style="color:#F06400;">Sky-swift Kenya Limited</p>
+
+
+ </body>
+ </html>
+ {% endautoescape %}
+

@@ -1,0 +1,346 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>-->
+<!--    <link rel="stylesheet" href="./css/tailwind.css">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,500;0,700;1,100;1,200&display=swap" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="./css/style.css">-->
+<!--    -->
+<!--    -->
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,500;0,700;1,100;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <!--Swiper js
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    --><style>
+
+
+    </style>
+    <title>skySwift</title>
+</head>
+<body>
+    <div id="app">
+        <!--Nav Area-->
+        <div class="mobile-nav grid grid-cols-1 gap-0">
+            <div class="px-10 top-menu flex items-center justify-between">
+                <span class="logo text-white text-xl font-light"><a href="{% url 'index' %}">sky-<span class="text-xl font-extrabold">Swift</span></a></span>
+                <div class="ends flex items-center space-x-2">
+
+                    <div class="mobile-bell-icon mr-2 sm:mr-4 md:mr-4">
+                        <span><i class="far fa-bell"></i></i></span>
+                        <div class="notification">2</div>
+                        <div class="popuptext" id="mobilePopup">
+                            <div class="item flex justify-between border-b-2 border-gray-200">
+                                <!-- <div class="text space-y-1 flex flex-col justify-start items-start">
+                                    <p>You have booked a place at Villa Boas Hotel for 12 January 2022 to 15 January 2022</p>
+                                    <a href="#" class=" text-blue-500 underline">Learn More</a>
+                                </div>
+                                <div class="icons space-y-2">
+                                    <span class="flex items-center justify-center"><i class="fas fa-times"></i></span>
+                                    <span class="flex items-center justify-center"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                            <div class="item flex justify-between">
+                                <div class="text space-y-1 flex flex-col justify-start items-start">
+                                    <p>Your accoun hasn't been activated yet. Please check your email for the confirmation.</p>
+                                    <a href="#" class=" text-blue-500 underline">Learn More</a>
+                                </div> -->
+                                <div class="icons space-y-2">
+                                    <span class="flex items-center justify-center"><i class="fas fa-times"></i></span>
+                                    <span class="flex items-center justify-center"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span class="profile-link cursor-pointer" id="mblprofilebtn">
+                            <div class="user flex items-center justify-center">
+                                <img src="{% static 'images/user.svg' %}" alt="" class="user-img">
+                                <span class="name text-white ml-2">{{user }}</span>
+                            </div>
+                            <div class="popuptext flex flex-col items-start justify-start p-4" id="mblmyPopup2">
+                                <a href="./profile.html#profilePage" class="mb-1 hover:text-orange-500">My Profile</a>
+                                <a href="./profile.html#bookingPage" class="mb-1 hover:text-orange-500">My Bookings</a>
+                                <a href="./profile.html#settingPage" class="mb-1 hover:text-orange-500">Settings</a>
+                                <a href="{% url 'logout' %}" class="mb-1 hover:text-orange-500">Log Out</a>
+                            </div>
+                        </span>
+                    </div>
+                    <span class="nav-icon" id="toggle"><i class="fas fa-align-justify"></i></span>
+                </div>
+            </div>
+
+            <div class="px-10 bottom-menu">
+                <!-- Navigation links (hidden by default) -->
+                <div class="myLinks flex flex-col mt-3 py-10">
+                    <nav class="grid grid-cols-2 col-gap-10 row-gap-10">
+                        <a href="./index.html" class="flex items-center"><img src="./assets/XMLID_874_.svg" alt=""><span class="ml-2">Rest</span></a>
+                        <a href="./flights.html" class="flex items-center"><img src="./assets/airplane.svg" alt=""><span class="ml-2">Flights</span></a>
+                       
+                    </nav>
+                    <!--REMOVED ON SUCCESFULL-->
+                    <div class="account-btns flex space-x-3 mt-8">
+                        <a href="./register.html" class="flex items-center justify-center px-8 py-2">Register</a>
+                        <a href="./login.html" class="flex items-center justify-center px-8 py-2">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-nav px-10 lg:px-24 sm:px-10 md:px-10 flex flex-col justify-end">
+            <div class="top-section flex items-center justify-between">
+                <span class="logo text-white text-xl font-light"><a href="{% url 'index' %}">sky-<span class="text-xl font-extrabold">Swift</span></a></span>
+                <div class="details flex justify-between">
+                    <a class="call-btn mr-8 sm:mr-4 md:mr-4 flex items-center justify-center" href="{% url 'logout' %}">Log out</a>
+
+                    <div class="bell-icon mr-8 sm:mr-4 md:mr-4">
+                        <span><i class="far fa-bell"></i></i></span>
+                        <div class="notification">0</div>
+                        <div class="popuptext" id="myPopup">
+                            <!-- <div class="item flex justify-between border-b-2 border-gray-200">
+                                <div class="text space-y-1 flex flex-col justify-start items-start">
+                                    <p>You have booked a place at Villa Boas Hotel for 12 January 2022 to 15 January 2022</p>
+                                    <a href="#" class=" text-blue-500 underline">Learn More</a>
+                                </div>
+                                <div class="icons space-y-2">
+                                    <span class="flex items-center justify-center"><i class="fas fa-times"></i></span>
+                                    <span class="flex items-center justify-center"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                            <!--Last item doesn't have bottom border-->
+                            <!-- <div class="item flex justify-between">
+                                <div class="text space-y-1 flex flex-col justify-start items-start">
+                                    <p>Your accoun hasn't been activated yet. Please check your email for the confirmation.</p>
+                                    <a href="#" class=" text-blue-500 underline">Learn More</a>
+                                </div>
+                                <div class="icons space-y-2">
+                                    <span class="flex items-center justify-center"><i class="fas fa-times"></i></span>
+                                    <span class="flex items-center justify-center"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div> --> <h1>No notifications</h1>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span class="profile-link cursor-pointer" id="profilebtn">
+                            <div class="user flex items-center justify-center">
+                                 {% if user.profile.profile_picture  %}
+                    <img src="{{  user.profile.profile_picture }}" alt="" class="user-img">
+                     {% else %}
+                     <img src="{% static 'css/assets/defaultprofilepic.png' %} " alt="" class="user-img">
+
+                    {% endif %}
+                                <span class="name text-white ml-2">{{ user }}</span>
+                            </div>
+                            <div class="popuptext flex flex-col items-start justify-start p-4" id="myPopup2">
+                                <a href="./profile.html#profilePage" class="mb-1 hover:text-orange-500">My Profile</a>
+                                <a href="./profile.html#bookingPage" class="mb-1 hover:text-orange-500">My Bookings</a>
+                                <a href="./profile.html#settingPage" class="mb-1 hover:text-orange-500">Settings</a>
+                                <a href="{% url 'logout' %}" class="mb-1 hover:text-orange-500">Log Out</a>
+                            </div>
+                        </span>
+                    </div>
+                    <!--TO BE SHOWN ON LOGIN
+
+                    <div class="account-btns flex space-x-3">
+                        <a href="./register.html" class="flex items-center justify-center">Register</a>
+                        <a href="./login.html" class="flex items-center justify-center">Sign In</a>
+                    </div>-->
+
+                </div>
+            </div>
+            <nav class="flex mt-12 justify-start">
+        <a onclick="location.href='{% url 'index' %}'" class="pb-3 mr-16 font-light flex "><img class="bigger-icon" src="{% static 'css/assets/XMLID_874_.svg' %}" alt=""><span class="ml-4">Rest</span></a>
+            <a onclick="location.href='{% url 'flights' %}'" class="pb-3 mr-16 font-light flex "><img class="bigger-icon" src="{% static 'css/assets/airplane.svg' %}" alt=""><span class="ml-4 mt-1">Flights</span></a>
+            </nav>
+        </div>
+
+        <!--Panel Area-->
+        <div class="profile-panel px-24 py-6 pb-10">
+            <!--Tabs-->
+            <ul class="tab-links flex justify-start space-x-20 mb-3">
+                <li @click="currentTab=1" class="cursor-pointer" :class="{'profile-active': currentTab==1}">My Profile</li>
+                <li @click="currentTab=2" class="cursor-pointer" :class="{'profile-active': currentTab==2}">My Bookings</li>
+                <li @click="currentTab=3" class="cursor-pointer" :class="{'profile-active': currentTab==3}">Settings</li>
+            </ul>
+
+            <!--Actual tabs-->
+            <div v-show="currentTab==1" class="profile" id="profilePage">
+
+                 <div class="card flex flex-col space-x-4 py-4 px-10">
+
+
+                <div class="card flex flex-col space-x-4 py-4 px-10">
+                    {% if user.profile.profile_picture  %}
+                    <img src="{{  user.profile.profile_picture.url  }}" alt="" class="top-user-img">
+                     {% else %}
+                     <img src="{% static 'css/assets/defaultprofilepic.png' %} " alt="" class="top-user-img">
+
+                    {% endif %}
+                    <form class="flex justify-between mt-6" method="POST" method='post'  action="{% url 'profileupdate' profile.pk %}" enctype="multipart/form-data">{% csrf_token %}
+                        <div class="left">
+                            <h4>Personal Details</h4>
+                            <div class="names flex space-x-3 my-4">
+
+                                <div class="flex flex-col">
+                                    <label for="first">profile picture</label>
+                                       {{ form.profile_picture }}
+                                </div>
+                                <div class="flex flex-col">
+                                    <label for="first">First Name</label>
+                                      {{ form.first_name }}
+                                </div>
+                                <div class="flex flex-col">
+                                    <label for="last">Last Name</label>
+                                    {{ form.last_name }}
+
+                                </div>
+                            </div>
+                            <div class="email flex flex-col my-4">
+                                <label for="email">Email Address</label>
+                               {{ form.email }}
+                            </div>
+                            <div class="phone flex flex-col my-4">
+                                <label for="phone">Phone Number</label>
+                                {{ form.phone_number }}
+                            </div>
+                        </div>
+                        <div class="center">
+                            <h4>Address</h4>
+                            <div class="address flex flex-col my-4">
+                                <label for="physical">Physical Address</label>
+                                 {{ form.physical_adress }}
+                            </div>
+                            <div class="address flex flex-col my-4">
+                                <label for="postal">Postal Address</label>
+                               {{ form.postal_address }}
+                            </div>
+                        </div>
+<!--                        <div class="right">-->
+<!--                            <h4>Payments</h4>-->
+<!--                            <div class="payment flex flex-col my-4">-->
+<!--                                <label for="method">Visa Card/Paypal/Mastercard</label>-->
+<!--                                <input type="text" id="method" placeholder="1234">-->
+<!--                            </div>-->
+                    <button style="background-color:#F06400; width:80px; height:50px;" type="submit">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+            <div v-show="currentTab==2" class="booking space-y-4" id="bookingPage">
+
+                {% for booking in bookings %}
+                <div class="card flex flex-col py-4 px-10">
+                    <div class="location flex flex-col space-y-4 bg-white justify-center items-center p-8">
+                        <img src="{{ booking.image.url }}" alt="">
+                        <div class="overlay"></div>
+                        <div class="txt">
+                            <h3>{{ booking.city }}</h3>
+                            <p>{{ booking.Check_out }} - {{ booking.Check_in }}</p>
+                        </div>
+                    </div>
+
+                    <div class="details flex items-center justify-between mt-5">
+                        <div class="hotel m-0 p-0 flex justify-center items-center space-x-4">
+                            <img src="{{ booking.image.url }}" alt="">
+                            <div class="hotel-details">
+                                <h4>{{ booking.hotel_name }}</h4>
+                                <p>{{ booking.Check_out }} - {{ booking.Check_in }}</p>
+<!--                                <p class="mt-2">Non-refundable</p>-->
+                            </div>
+                        </div>
+                        <div class="price">
+                            <h3>{{ booking.currency }}, {{ booking.Price }}</h3>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <h1>
+                    You have not made any bookings
+                </h1>
+                 {% endfor %}
+
+            </div>
+            <div v-show="currentTab==3" class="setting" id="settingPage">
+                <div class="inner">
+
+                </div>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <footer class="px-10 lg:px-24 sm:px-10 md:px-10 py-8">
+            <div class="widgets grid grid-cols-3 gap-4 ">
+                <div class="box1 flex flex-col justify-center items-center space-y-2">
+                     <img style="lenght:20px;width:180px;" src="{% static '/images/sky-swiftlogo.png' %}" alt="" class="logo">
+                    <p class="text-center">SkySwift is a modern agency that provides destinations and vacations with a touch of class.</p>
+                    <div class="social flex space-x-2">
+                        <a href="https://www.facebook.com/skyswiftlimited/" class="flex items-center justify-center"><i class="fab fa-facebook-f"></i></a>
+<!--                        <a href="#" class="flex items-center justify-center"><i class="fab fa-twitter"></i></a>-->
+<!--                        <a href="#" class="flex items-center justify-center"><i class="fab fa-instagram"></i></a>-->
+<!--                        <a href="#" class="flex items-center justify-center"><i class="fab fa-youtube"></i></a>-->
+                    </div>
+                </div>
+                <div class="box2 flex items-center justify-center">
+                    <div class="items flex flex-col items-start justify-center">
+                       <a  href="tel:+25433555504" class="mb-2">Phone: 0733-55-55-04, </a>
+                        <a href="tel:+25433555576" class="mb-2">0733-55-55-76</a>
+                         <a href="mailto:info@sky-swift.com" class="mb-2">Email: info@sky-swift.com</a>
+
+                         <h4  class="mb-2">P.O.Box 49993-00100</h4>
+                        <h4 class="mb-2">Flamingo Towers 4th floor wing A, Mara Rd, Upperhill, Nairobi</h4>
+
+
+                    </div>
+                </div>
+                <div class="box3 flex items-center justify-center">
+                    <div class="items flex flex-col items-start justify-center">
+<!--                        <a href="#" class="mb-2">About Us</a>-->
+<!--                        <a href="#" class="mb-2">Customer Service</a>-->
+                        <a href="{% url 'terms' %}" class="mb-2">Terms & Conditions</a>
+                    <a href="{% url 'use_policy' %}" class="mb-2">Acceptable Information Technology Use Policy</a>
+                        <a href="{% url 'careers' %}" class="mb-2">Careers</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="bottom-bar"></div>
+    </div>
+
+    <!--Scripts-->
+    <script src="{% static 'jquery-3.5.1.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="{% static 'js/jquery.steps.min.js' %}"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/vue.js' %}"></script>
+    <script>
+        let vue1 = new Vue({
+            el: '#app',
+            data: {
+                currentTab: 1
+            }
+        });
+    </script>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

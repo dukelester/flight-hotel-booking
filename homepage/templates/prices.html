@@ -1,0 +1,82 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!--Search Path-->
+    <div class="path px-24 py-5 flex items-center justify-start space-x-4">
+        <p>Home</p>
+        <span><i class="fas fa-chevron-right"></i></span>
+        <p>Kenya</p>
+        <span><i class="fas fa-chevron-right"></i></span>
+        <p>Diani Beach</p>
+        <span><i class="fas fa-chevron-right"></i></span>
+        <h5 class="">Search results</h5>
+    </div>
+
+    <!--Main page content-->
+    <div class="main-content px-24 flex space-x-8">
+        <div class="sidebar">
+            <div class="search-form p-10">
+                <h3>Search</h3>
+                <form class="space-y-5 mt-4">
+                    <div>
+                        <label for="dest">Destination/property name:</label>
+                        <div class="inputs flex items-center">
+                            <span><i class="fas fa-search"></i></span>
+                            <input type="text" id="dest" placeholder="  Diani Beach">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="in">Check-in Date</label>
+                        <div class="inputs flex items-center">
+                            <img src="{% static 'css/assets/calendar-alt-regular.svg' %}" alt="">
+                            <input type="text" id="in" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="  Check-in Date">
+                            <span class="ml-auto"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="out">Check-out Date</label>
+                        <div class="inputs flex items-center">
+                            <img src="{% static 'css/assets/calendar-alt-regular.svg' %}" alt="">
+                            <input type="text" id="out" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="  Check-out Date">
+                            <span class="ml-auto"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="numbers flex justify-between items-center">
+                        <input type="number" placeholder="2 adults">
+                        <div class="chevs flex flex-col ml-auto">
+                            <span><i class="fas fa-chevron-up"></i></span>
+                            <span><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="smaller flex">
+                            <input class="col-span-1" type="number" placeholder="No children">
+                            <div class="chevs flex flex-col ml-auto">
+                                <span><i class="fas fa-chevron-up"></i></span>
+                                <span><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <div class="smaller flex">
+                            <input type="number" placeholder="1 room">
+                            <div class="chevs flex flex-col ml-auto">
+                                <span><i class="fas fa-chevron-up"></i></span>
+                                <span><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work mt-3">
+                        <input type="checkbox" name="" id="">
+                        <label for="">I'm travelling for work</label>
+                    </div>
+                    <button>Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="search-result"></div>
+    </div>
+
+
+{% endblock %}

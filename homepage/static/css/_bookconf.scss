@@ -1,0 +1,159 @@
+.confirm-panel {
+   .top-card {
+       background-color: $primary_clr_2;
+       h5 {
+            font-size: 18px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+       }
+       h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+       h3 {
+           font-size: 24px;
+           font-weight: 600;
+           color: $txt_clr_dark;
+       }
+       p {
+            font-size: 18px;
+            font-weight: 300;
+            color: $txt_clr_dark;
+        }
+        a {
+            font-size: 18px;
+            font-weight: 300;
+        }
+        span {
+            font-size: 20px;
+            font-weight: 600;
+            color: $accent_clr;
+        }
+   } 
+   .others {
+       h3 {
+            font-size: 24px;
+           font-weight: 600;
+           color: $txt_clr_dark;
+       }
+       h4 {
+            font-size: 20px;
+           font-weight: 600;
+           color: $txt_clr_dark;
+       }
+       .others-cards {
+           .card {
+               @extend .top-card;
+               button {
+                   background-color: $accent_clr;
+                   color: $txt_clr_light;
+                   padding: 0 1.5em !important;
+                   height: 40px;
+               }
+           }
+       }
+   }
+   .details {
+        h3 {
+            font-size: 28px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+       .inner {
+           grid-template-columns: 3fr 1fr;
+           column-gap: 2em;
+       }
+       
+       .card {
+           @extend .top-card;
+           p {
+               text-align: left !important;
+           }
+       }
+       .right {
+           border: 2px solid $accent_clr;
+           height: fit-content;
+           h5 {
+            font-size: 18px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+            }
+            h4 {
+                font-size: 20px;
+                font-weight: 600;
+                color: $txt_clr_dark;
+            }
+            h3 {
+                font-size: 24px;
+                font-weight: 600;
+                color: $txt_clr_dark;
+            }
+            p {
+                font-size: 18px;
+                font-weight: 300;
+                color: $txt_clr_dark;
+            }
+            a {
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .opt-txt {
+                margin-bottom: 1em !important;
+            }
+            button {
+                background-color: $accent_clr;
+                color: $txt_clr_light;
+                padding: 0 1.5em !important;
+                height: 40px;
+                width: 100% !important;
+            }
+       }
+   }
+   .property {
+        h3 {
+            font-size: 28px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+       .card {
+           @extend .top-card;
+           width: 73%;
+       }
+   }
+   .tips {
+        h3 {
+            font-size: 28px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+        .card {
+            @extend .top-card;
+            width: 73%;
+            h5 {
+                font-size: 18px;
+                font-weight: 600;
+                color: $txt_clr_dark;
+            }
+        }
+   }
+   .important {
+        h3 {
+            font-size: 28px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+        .card {
+            @extend .top-card;
+            width: 73%;
+            h5 {
+                font-size: 18px;
+                font-weight: 600;
+                color: $txt_clr_dark;
+            }
+        }
+        .final {
+            width: 73%;
+        }
+    }
+}

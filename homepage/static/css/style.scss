@@ -1,0 +1,137 @@
+$primary_clr_1: #3F4446;
+$primary_clr_2: #f5f5f5;
+$txt_clr_light: #FFFFFF;
+$txt_clr_dark: #3F4446;
+$txt_clr_lighter: rgba(255, 255, 255, 0.733);
+$accent_clr: #F06400;
+
+@font-face {
+    font-family: Averta;
+    src: url(../fonts/AvertaDemoPECuttedDemo-Regular.otf);
+}
+
+* {
+    font-family: Averta;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+p {
+    font-weight: 300 !important;
+}
+.active-tab {
+    background: $accent_clr !important;
+    color: #FFFFFF !important;
+}
+
+@import "./home";
+@import "./flights";
+@import "./hire";
+@import "./taxi";
+@import "./destination";
+@import "./search";
+@import "./profile";
+@import "./register";
+@import "./login";
+@import "./call";
+@import "./jobs";
+@import "./job";
+@import "./book";
+@import "./construction";
+@import "./bookconf";
+@import "./searchItem";
+@import "./rooms";
+@import "./bookFlight";
+
+//New home page search bar styles 
+.plus-popup {
+    bottom: -15em;
+    left: 0;
+    margin-bottom: 1em;
+    border: 1px solid gray;
+    background-color: white;
+
+    span {
+        border: 1px solid gray;
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+}
+
+//new extra pages styles
+input,select {
+    outline: none !important;
+}
+.failed-msg, .status-msg {
+    h5,h2,p {
+        color: $txt_clr_dark;
+    }
+}
+//rooms.html
+.search-result {
+    .top-titles {
+        h4 {
+            font-size: 22px;
+            font-weight: 700;
+            color: $txt_clr_dark;
+        }
+        h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: $txt_clr_dark;
+        }
+        p,li {
+            font-size: 16px;
+            font-weight: 300;
+            color: $txt_clr_dark;
+        }
+        span {
+            font-size: 18px;
+            font-weight: 300;
+            color: $txt_clr_dark;
+        }
+        .right {
+            h5 {
+                font-size: 18px;
+                font-weight: 700;
+                color: $txt_clr_dark;
+            }
+            a {
+                font-size: 18px;
+                font-weight: 300;
+            }
+        }
+        .left {
+            .leftBtn {
+                color: $txt_clr_light;
+                background-color: $accent_clr;
+                padding: .7em 1.7em;
+            }
+        }
+    }
+    .result {
+        width: 100% !important;
+        display: grid !important;
+        grid-template-columns: 2fr 1fr !important;
+        gap: 1em;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .result {
+        width: 100% !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+}

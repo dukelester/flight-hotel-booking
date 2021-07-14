@@ -1,0 +1,39 @@
+.job-details-section {
+    min-height: 50vh;
+    .brand-logo {
+        height: 200px;
+        width: 200px;
+    }
+    h3 {
+        font-size: 30px;
+        font-weight: 600;
+        color: $txt_clr_dark;
+    }
+    h4 {
+        font-size: 22px;
+        font-weight: 600;
+        color: $txt_clr_dark;
+    }
+    p,ul {
+        font-size: 18px;
+        font-weight: 300;
+        color: $txt_clr_dark;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .job-details-section {
+        .brand-logo {
+            height: 150px;
+            width: 150px;
+        }
+        h3 {
+            font-size: 22px;
+        }
+        h4 {
+            font-size: 18px;
+        }
+        p,ul {
+            font-size: 14px;
+        }
+    }
+}

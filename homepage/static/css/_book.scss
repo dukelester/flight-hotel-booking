@@ -1,0 +1,57 @@
+.progress-form {
+    color: $txt_clr_dark;
+
+    .progress-bar {
+        .number, .check {
+            background-color: $accent_clr;
+            color: $txt_clr_light !important;
+        }
+    }
+    .first {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-gap: 1.7em;
+        .details {
+            border: 1px solid $accent_clr;
+            height: fit-content;
+            .one-day {
+                span {
+                    background-color: $accent_clr;
+                    color: $txt_clr_light !important;
+                }
+                p {
+                    color: $accent_clr !important;
+                }
+            }
+        }
+        .edits {
+            input {
+                height: 40px;
+            }
+            .form-sections {
+                .sect {
+                    background: $primary_clr_2;
+                }
+                button {
+                    background-color: $accent_clr;
+                }
+            }
+        }
+    }
+    .second {
+        @extend .first;
+        .edits {
+            input,select {
+                height: 40px;
+            }
+            .form-sections {
+                .sect {
+                    background: $primary_clr_2;
+                }
+                button {
+                    background-color: $accent_clr;
+                }
+            }
+        }
+    }
+}

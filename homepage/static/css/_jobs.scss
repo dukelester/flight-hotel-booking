@@ -1,0 +1,61 @@
+.jobs-nav {
+    height: 150px;
+    background-color: $accent_clr;
+}
+.jobs-title {
+    h4 {
+        font-size: 24px;
+        font-weight: 600;
+        color: $txt_clr_dark;
+    }
+}
+.jobs-panel {
+    background-color: $primary_clr_2;
+    .infos {
+        h5 {
+            font-size: 16px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+        p {
+            font-size: 15px;
+            font-weight: 200;
+            color: $txt_clr_dark;
+        }
+        h6 {
+            font-size: 15px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+    }
+    a {
+        width: 100%;
+        height: 100%;
+        transition: all .5s ease-in-out;
+        &:hover .job-card {
+            border: 1px solid $accent_clr;
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    .jobs-nav {
+        .details {
+            .call-btn {
+                width: 100px;
+                font-size: 15px;
+            }
+        }
+        nav {
+           width: 100%; 
+        }
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .jobs-nav {
+        display: none;
+    }
+}

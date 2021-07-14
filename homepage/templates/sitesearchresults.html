@@ -1,0 +1,103 @@
+
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block content %}
+
+
+
+    <!--Best by clients-->
+<div class="search-result w-12/12">
+                <h3 class="mb-2">Diani Beach: 129 properties found</h3>
+
+                <div v-for="result in results" class="result mb-3 p-3 space-x-4">
+                    <div class="relative">
+                        <img src="./assets/mg.png" alt="" class="result-img">
+                        <span class="absolute text-white text-2xl" style="top: 10px; right:10px;"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                    </div>
+
+                    <div class="result-details space-y-1">
+                        <h3>{{ result.name }}</h3>
+                        <span class="links flex space-x-4 my-3">
+                            <a href="#" class="text-blue-500">{{ result.location }}</a>
+                            <a href="#" class="text-blue-500">show map</a>
+                        </span>
+                        <div class="flex space-x-1 mb-2">
+                            <p>1.6 km from center</p>
+                            <span>&#149</span>
+                            <p>Beachfront</p>
+                            <span>&#149</span>
+                            <p>Spa</p>
+                            <span>&#149</span>
+                            <p>Gym</p>
+                        </div>
+                        <div class="desc">
+                            <p>{{ result.descripion }}</p>
+                        </div>
+<!--                        -->
+                    </div>
+
+                    <div class="extra">
+                        <div class="review flex items-center space-x-4">
+                            <div class="text flex flex-col space-y-1">
+                                <h4>Excellent</h4>
+                                <p>184 reviews</p>
+                            </div>
+                            <span class="rating relative">
+                                <img src="./assets/Path 47.svg" alt="" class="">
+                                <h6 class="z-10">9.2</h6>
+                            </span>
+                        </div>
+                        <div class="price mt-5">
+                            <a href="./rooms.html">Show rooms</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <div class="best px-10 lg:px-24 sm:px-10 md:px-10 py-5">
+        <h3 class="my-5"></h3>
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 justify-center items-center">
+                {% for contextlist in contextlist %}
+        <a href="{{ contextlist.bookinglink }}" style="text-decoration: none; cursor: pointer; :hover{text-decoration: none; } " target="_blank">
+            <div class="card">
+                 {% for picture in contextlist.pictures %}
+                <img src="{{ picture }}" alt="" style="width: 379px;height: 340px;">
+
+                 {% endfor %}
+
+
+                <div class="card-details mt-3">
+                    <div class="reviews flex flex-col flex-col justify-between">
+                        <p>{{ contextlist.name }}</p>
+<!--                        <h5>City:{{ contextlist.name }}</h5>-->
+                        <h4>Starting from {{ contextlist.currency }} {{ contextlist.ammount }}</h4>
+                        <div class="bottom flex space-x-1 mt-2">
+                            <span class="rating relative flex">
+                                <img src="./assets/Path 47.svg" alt="" class="">
+<!--                                <h6 class="z-10">9.2</h6>-->
+                            </span>
+
+                            <p>{{ contextlist.rating }} Reviews</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+
+
+    </div>
+        </div>
+
+
+
+
+
+
+{% endblock %}

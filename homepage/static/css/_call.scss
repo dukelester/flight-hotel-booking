@@ -1,0 +1,155 @@
+.call-header {
+    height: 150px;
+    background: $accent_clr;
+    .account-btns {
+        a {
+            color: $accent_clr;
+            background: $txt_clr_light;
+            width: 160px;
+            height: 41px;
+            border-radius: 3px;
+            padding: 3px 3px 3px 3px;
+        }
+    }
+}
+
+.call-banner {
+    height: 500px;
+    img {
+        object-fit: cover;
+    }
+}
+.outsource {
+    background: $primary_clr_2;
+    .text {
+        h4 {
+            font-size: 22px;
+            font-weight: 600;
+            color: $primary_clr_1;
+        }
+        p {
+            font-size: 18px;
+            font-weight: 300 ;
+            color: $primary_clr_1;
+        }
+    }
+    a {
+        color: $txt_clr_light;
+        background: $accent_clr;
+        width: 160px;
+        height: 41px;
+        border-radius: 3px;
+        padding: 3px 3px 3px 3px;
+    }
+}
+
+.services {
+    .icon-card {
+        span {
+            color: $txt_clr_dark;
+            img {
+                width: 64px;
+                height: 64px;
+            }
+        }
+        h4 {
+            font-size: 22px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+    }
+}
+.service-benf {
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    h3 {
+        font-size: 30px;
+        font-weight: 900;
+        color: $txt_clr_dark;
+    }
+    p {
+        font-size: 18px;
+        font-weight: 300;
+        color: $txt_clr_dark;
+    }
+    .benf {
+        h5 {
+            font-size: 18px;
+            font-weight: 600;
+            color: $txt_clr_dark;
+        }
+        p {
+            font-size: 16px;
+            font-weight: 300;
+            color: $txt_clr_dark;
+        }
+    }
+}
+
+.flex-cards {
+   .card-one {
+       background-color: $txt_clr_light;
+       border: 1px solid $accent_clr;
+       h3 {
+        font-size: 30px;
+        font-weight: 600;
+        color: $txt_clr_dark;
+        }
+        p {
+            font-size: 18px;
+            font-weight: 300;
+            color: $txt_clr_dark;
+        }
+   } 
+   .card-two {
+        @extend .card-one;
+        background-color: $accent_clr;
+        h3 {
+            color: $txt_clr_light;
+        }
+        p {
+            color: $txt_clr_light;
+        }
+   }
+}
+
+.processes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr .7fr;
+    grid-gap: 1.5em;
+    h2 {
+        font-size: 32px;
+        font-weight: 600;
+        color: $txt_clr_dark;
+        z-index: 2;
+    }
+    h3 {
+        font-size: 64px;
+        font-weight: 600;
+        color: $txt_clr_dark;
+    }
+    h4{
+        font-size: 22px;
+        font-weight: 600;
+        color: $txt_clr_dark;
+    }
+    p {
+        font-size: 18px;
+        font-weight: 300;
+        color: $txt_clr_dark;
+    }
+    .final {
+        .box {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 65%;
+            height: 100%;
+            background: $accent_clr;
+        }
+    }
+}

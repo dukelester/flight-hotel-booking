@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm</title>
+</head>
+<body>
+
+
+
+{{ mycontextdict.offerid }}<br>
+
+{{ mycontextdict.name }}
+
+{{ mycontextdict.availability }}<br>
+{{ mycontextdict.checkindate }}<br>
+{{ mycontextdict.checkoutdate }}<br>
+{{ mycontextdict.roomtype }}<br>
+{{ mycontextdict.roomcat }}<br>
+{{ mycontextdict.bed }}<br>
+{{ mycontextdict.bedtype }}<br><br><br>
+
+
+<form method="post" action="{% url 'book' mycontextdict.offerid %}">{% csrf_token %}
+       <input placeholder="mr/miss" name="title">
+       <input  placeholder="First Name" name="FirstName">
+       <input placeholder="Last Name" name="LastName">
+       <input placeholder="Phone no" name="phoneno">
+       <input placeholder="Email" name="email">
+
+
+
+
+
+
+
+<button type="submit">Book</button>
+
+
+
+   </form>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'tailwind.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,500;0,700;1,100;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Sky-Swift Call Centre</title>
+
+</head>
+<body>
+    <!--Nav Area-->
+    <header class="call-header px-24 flex items-center justify-start">
+        <span class="logo text-white text-xl font-light"><a href="{% url 'index' %}">sky-Swift<span class="text-xl font-extrabold"> Call Centre (S.S.C.C)</span></a></span>
+        <div class="account-btns flex space-x-3 ml-auto">
+            <a href="{% url 'signuppage' %}" class="flex items-center justify-center">Register</a>
+            <a href="{% url 'loginpage' %}" class="flex items-center justify-center">Sign In</a>
+        </div>
+    </header>
+
+    <!--banner-->
+    <div class="call-banner"></div>
+
+    <!--OutSource-->
+    <div class="outsource px-24 py-10 flex justify-between items-center">
+        <div class="text space-y-3">
+            <h4>Start outsourcing your business processes and improve your productivity</h4>
+            <p>Tailor made solutions just for your business needs</p>
+        </div>
+        <a href="#" class="flex items-center justify-center">Start Now</a>
+    </div>
+
+    <!--Services Offered-->
+    <div class="services px-24 py-10">
+        <div class="top flex items-center justify-around">
+            <div class="icon-card flex flex-col justify-center items-center">
+                <span><img src="https://img.icons8.com/pastel-glyph/64/000000/groups.png"/></span>
+                <h4>Customer Relationship Management</h4>
+            </div>
+            <div class="icon-card flex flex-col justify-center items-center">
+                <span><img src="https://img.icons8.com/wired/64/000000/payroll.png"/></span>
+                <h4>Debt Collection </h4>
+            </div>
+            <div class="icon-card flex flex-col justify-center items-center">
+                <span><img src="https://img.icons8.com/wired/64/000000/accounting.png"/></span>
+                <h4>Telesales</h4>
+            </div>
+        </div>
+        <div class="bottom flex items-center justify-around my-20">
+            <div class="icon-card flex flex-col justify-center items-center">
+                <span><img src="https://img.icons8.com/pastel-glyph/64/000000/online-support.png"/></span>
+                <h4>Customer service via voice calls,social media and  sms</h4>
+            </div>
+            <div class="icon-card flex flex-col justify-center items-center">
+                <span><img src="https://img.icons8.com/wired/64/000000/server.png"/></span>
+                <h4>Telehealth</h4>
+            </div>
+        </div>
+    </div>
+
+    <!--Benefits of services-->
+    <div class="service-benf px-24 py-5 space-y-5">
+        <div class="top grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10">
+            <img src="{% static '/images/pexels-pixabay-267507.jpg' %}" alt="">
+            <div class="txt">
+                <h3>Our services help businesses <br/> expand and optimize operations</h3>
+                <p class="my-6">SKY-SWIFT LIMITED, we are registered and incorporated under the companies Act, 2015 and the company is a private limited. We are located at Flamingo Towers upper hill 4th floor wing A.</p>
+                <p class="my-6"> We are a company that helps our clients to improve their customer service. Our call centre is proficient in making inbound and outbound calls
+                and is very experienced in sales support, customer registration and customer video authentication for telecommunication companies too. </p>
+                <p class="my-6"> Our goal is to provide our clients with the best customer support solution that is adapted to their business. By collaborating with our clients, weare able to grow their business and customer loyalty.<p/>
+                <p class="my-6"> Nowadays, quality customer support matters more than ever. To assure that your customer service becomes your competitive advantage on the market, it has to be of high quality and give effective responses to customers timely. A lot of effort and additional researches need to be made to achieve a customer-oriented service. Once it's achieved, it deepens your relationship with your customers and makes them become
+                satisfied users of your services.</p>
+            </div>
+        </div>
+        <div class="bottom grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10">
+            <img src="{% static '/images/pexels-tima-miroshnichenko-5453837.jpg' %}" alt="">
+            <div class="txt py-10">
+                <p class="my-6"> We help you to: </p>
+                <div class="grid grid-cols-2 row-gap-16 col-gap-20">
+                     <div class="benf space-y-2">
+                        <h5>Have Flexibility </h5>
+                        <p>Stay devoted to your clients even outside your working hours. We are working 24 hours a day andare offering “on demand” customer support to them.Turn your company to the research and development of your products and services, let us take care of your customers</p>
+                    </div>
+                    
+                    <div class="benf space-y-2">
+                        <h5>Modernise your business</h5>
+                        <p>All our “know-how” is available to our partners and we use it to implement the best customer service solution for their business. Modernise your repetitive business processes and add value to your company with our support.
+                        We are able to fulfil your business needs and level up your customer service.</p>
+                    </div>
+                    <div class="benf space-y-2">
+                        <h5>Sales Representation</h5>
+                        <p>Here we include informing your customers of new products and options, collecting leads, loyalty program support and various administrative jobs.Our experienced agents will find the best way to sell your products and satisfy the needs of your current and potential consumers.</p>
+                    </div>
+                   
+                    <div class="benf space-y-2">
+                        <h5>Bring Competence <br/> </h5>
+                        <p>Outsourcing gives you the chance to leave parts of your business to competent experts with great experience. Our professional team is our biggest value. There are more than 120 call agents who are trained to make inbound and outbound calls in foreign languages e.g Spanish French and English
+                    </div>
+                    <div class="benf space-y-2">
+                        <h5>Focus on your core business</h5>
+                        <p>Outsourcing can bring flexibility and customer satisfaction to your business. Additional services like these are differentiating you from your competition.</p>
+                    </div>
+                    
+                    <div class="benf space-y-2">
+                        <h5>Additional services</h5>
+                        <p>Here we include informing your customers of new products and options, collecting leads, loyalty program support and various administrative jobs.</p>
+                    </div>
+                    <div class="benf space-y-2">
+                        <h5>Customer Support</h5>
+                        <p> Our agents are trained to make inbound and outbound calls in a few languages. We are performing services like registration and video authentication of new users for the biggest European telecommunication companies every day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="flex-cards px-24 pt-5 pb-20 grid grid-cols-2 gap-20">
+        <div class="card-one p-8">
+            <h3>Inbound Calls Services</h3>
+            <p class="my-6">Customer service via voice calls, e-mail, live chat,social media and sms,Customer Relationship Management,After-hours support e.t.c</p>
+        </div>
+        <div class="card-two p-8">
+            <h3>Outbound Call services</h3>
+            <p class="my-6">Telehealth, Telesales , Research Surveys and Polling, Up Sell and Cross Sell Campaigns,c e.t.c</p>
+        </div>
+    </div>
+
+    <!--process we use-->
+    <div class="processes px-24 pt-5 pb-20">
+        <div class="pross flex space-x-4">
+            <h3>01</h3>
+            <div class="text space-y-2">
+                <h4>Planning</h4>
+                <p>We meet and plan based on your exact specifications and needs.</p>
+            </div>
+        </div>
+        <div class="pross flex space-x-4">
+            <h3>02</h3>
+            <div class="text space-y-2">
+                <h4>Development</h4>
+                <p>We create a custom solution as per your business requirements.</p>
+            </div>
+        </div>
+        <div class="pross flex space-x-4">
+            <h3>03</h3>
+            <div class="text space-y-2">
+                <h4>Implementation</h4>
+                <p>The solution is deployed for your business to help it grow.</p>
+            </div>
+        </div>
+        <div class="final relative flex items-center">
+            <h2>Let's work together</h2>
+            <div class="box"></div>
+        </div>
+    </div>
+
+    <!--Subscribe-->
+    <div class="subscribe px-24 py-8 relative flex flex-col items-center justify-center">
+        <h3 class="text-center">Save time, save money!</h3>
+        <p>Sign up and we'll send you the best deals staright to you</p>
+        <form METHOD="post" ACTION="mailsubscription" class="flex mt-8">{% csrf_token %}
+            <input name = 'email' type="text" placeholder="Your Email">
+            <button  type="submit" class=" ml-5">Subscribe</button>
+        </form>
+    </div>
+
+
+     <footer class="px-10 lg:px-24 sm:px-10 md:px-10 py-8">
+        <div class="widgets grid grid-cols-3 gap-4 ">
+            <div class="box1 flex flex-col justify-center items-center space-y-2">
+                <img style="lenght:20px;width:180px;" src="{% static '/images/sky-swiftlogo.png' %}" alt="" class="logo">
+                <p class="text-center">SkySwift is a modern agency that provides destinations and vacations with a touch of class.</p>
+                <div class="social flex space-x-2">
+                    <a href="#" class="flex items-center justify-center"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="flex items-center justify-center"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="flex items-center justify-center"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="flex items-center justify-center"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="box2 flex items-center justify-center">
+                <div class="items flex flex-col items-start justify-center">
+                    <a href="{% url 'index' %}" class="mb-2">Rests</a>
+                    <a href="{% url 'book' %}" class="mb-2">Flights</a>
+            </div>
+            </div>
+            <div class="box3 flex items-center justify-center">
+                <div class="items flex flex-col items-start justify-center">
+                    <a href="#" class="mb-2">About Us</a>
+                    <a href="{% url 'use_policy' %}"class="mb-2">Acceptable Information Technology Use Policy</a>
+                    <a href="{% url 'terms' %}" class="mb-2">Terms & Conditions</a>
+                    <a href="{% url 'privacypolicy' %}" class="mb-2">Privacy & Cookie statement</a>
+                    <a href="{% url 'careers' %}" class="mb-2">Careers</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="bottom-bar"></div>
+
+    <!--Scripts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+
+</body>
+</html>

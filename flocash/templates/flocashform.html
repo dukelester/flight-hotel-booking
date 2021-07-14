@@ -1,0 +1,203 @@
+
+
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block content %}
+
+<body>
+<style>
+    @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  @media screen and (max-width: 600px) {
+    td, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+.swift{
+    text-align: center;
+    margin-top: 50px;
+}
+table {
+  border-collapse: collapse;
+}
+.items{
+    margin: auto;
+    margin-top: 20px;
+}
+td{
+    font-size: 20px;
+    font-weight: medium;
+}
+input{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+}
+.sub{
+    width: 150px;
+    color: #fff;
+    background-color: #ed6a05;
+    border: none;
+    margin-top: 20px;
+}
+footer{
+    margin-top: 80px;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-height:600px){
+	footer { position: static; }
+}
+
+@media (max-width: 600px) {
+
+	.footer-distributed .logo,
+	.footer-distributed .contacts,
+	.footer-distributed .careers{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .logo i{
+		margin-left: 0;
+	}
+
+}
+
+</style>
+    <header>
+<!--        <div class="emails" style="background-color: #ed6a05; height: 150px;">-->
+<!--            <img src="{% static 'images/sky-swiftlMainLogo.png' %}" class="sky" style="margin-top: 40px;  margin-left: 30px; width:200px;">-->
+<!--        </div>-->
+    </header>
+    <div class="swift">
+
+    <h1 >Enter the Item to pay. </h1>
+
+   <form action="https://sandbox.flocash.com/ecom/ecommerce.do" method="POST" style="text-align: center; margin: auto;">{% csrf_token %}
+    <!--Merchant account-->
+    <input type="hidden" name="merchant" value="sky-swift@mobirr.com"/>
+    <input type="hidden" name="cancel_url" value="https://www.sky-swift.com">
+    <input type="hidden" name="notify_url" value="http://127.0.0.1:8000/flocash">
+    <!--Order Id-->
+    <input type="hidden" name="order_id" value=”123456” />
+    <!--Customer Id-->
+    <input type="hidden" name="custom" value="custom"/>
+    <!--Currency Code-->
+<!--    <input type="hidden" name="currency_code" value="KES"/>-->
+
+<!--       <input type="text" name="">-->
+
+    <table  class="items" >
+        <!--Item Name-->
+<!--         <tr>-->
+<!--            <td>Customer Account</td>-->
+<!--            <td><input name="customer_acc" size="50" value="customer@test.com"></td>-->
+<!--        </tr>-->
+        <tr>
+            <td colspan="2">Customer Information:</td>
+        </tr>
+        <tr>
+<!--            <td>Country</td>-->
+            <td><input type="hidden" name="country" value="KE"></td>
+        </tr>
+        <tr>
+            <td  style="color:orangered">First Name</td>
+            <td><input type="text" name="user_firstName" placeholder="First Name" required></td>
+        </tr>
+        <tr>
+            <td  style="color:orangered">Last name</td>
+            <td><input type="text" name="user_lastName" placeholder="Last Name" required></td>
+        </tr>
+        <tr>
+            <td  style="color:orangered">Address</td>
+            <td><input type="text" name="user_address" placeholder="Enter your Address" required ></td>
+        </tr>
+        <tr>
+            <td  style="color:orangered">City</td>
+            <td><input type="text" name="user_city" placeholder="Enter your City" required></td>
+        </tr>
+<!--        <tr>-->
+<!--            <td>State</td>-->
+<!--            <td><input type="text" name="user_state" value="user State"></td>-->
+<!--        </tr>-->
+        <tr>
+            <td  style="color:orangered">Postal Code</td>
+            <td><input type="text" name="user_postalCode" placeholder="Enter the postal code" required ></td>
+        </tr>
+        <tr>
+            <td  style="color:orangered">E-mail</td>
+            <td><input type="email" name="user_email" placeholder="Enter your email" required></td>
+        </tr>
+        <tr>
+            <td  style="color:orangered">Mobile</td>
+            <td><input type="text" name="user_mobile" placeholder="Enter your phone number" required></td>
+        </tr>
+    <tr>
+            <td  style="color:orangered">Item</td>
+            <td >
+            <input  type="text" id="item_name" name="item_name"placeholder="Enter your Product" required/>
+        </td>
+    </tr>
+         <input type="hidden" name="currency_code" value="KES"/>
+        <tr>
+            <td  style="color:orangered">Price</td>
+            <td>
+            <input type="number" id="item_price" name="item_price" placeholder="Enter the Cost" required/>
+        </td>
+    </tr>
+        <tr>
+            <td  style="color:orangered">Quantity</td>
+            <td>
+            <input type="number" id="quantity" name="quantity" placeholder="Enter the Quantity" required/>
+        </td>
+    </tr>
+        <tr>
+            <td  style="color:orangered">Amount</td>
+            <td>
+            <input type="text" id="amount" name="amount" placeholder=" " required/>
+            </td>
+            <script>
+            
+                var total = parseInt( sessionStorage.getItem( "total" ) );
+                var quantity = 2;
+                var updatedTotal = total * quantity;
+                sessionStorage.setItem( "total", updatedTotal ); 
+        
+                </script>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+            <input type="submit" value="Checkout" class="sub" >
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+<!-- <div class="bottom-box" style="background-color: #ed6a05; height: 50px; margin-top: 20px;"></div> -->
+
+</body>
+
+{%  endblock %}

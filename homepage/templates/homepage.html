@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!--covid Section&ndash;&gt;-->
+
+
+    <div class="covid px-24 flex items-center justify-start">
+        <p class=" font-bold"><a  href="">Corona Virus (COVID 19) Support</a></p>
+    </div>
+
+    <!--Destination Form-->
+ <div class="form px-10 lg:px-24 sm:px-10 md:px-10 flex flex-col justify-center py-20">
+        <h3>Where to next<span class="hidden"> </span> ?</h3>
+        <p>From cozy homes to swanky lounges</p>
+        <form method= 'POST' action="search" class="flex">{% csrf_token %}
+            <div class="form-box flex flex-auto items-center justify-start">
+                <img class="mr-3 ml-3" src="{% static 'css/assets/XMLID_874_ - Copy.svg' %}" alt="">
+                 <input required name="citycode" type="text" placeholder="To?" id="searchField" list="datalist-data">
+            </div>
+            <datalist class="h-8" id="datalist-data"></datalist>
+            <div class="form-box flex items-center justify-start">
+                <span class="mr-3 ml-3"><i class="far fa-calendar-alt"></i></span>
+                <div class="date-inpts flex items-center">
+                    <input required name="checkindate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Check-in">
+                    <span  class="line mx-6"></i></span>
+                    <input required name="checkoutdate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Check-out">
+                </div>
+            </div>
+<!--            <div class="form-box flex items-center justify-start">-->
+<!--                <span class="mr-2 ml-1"><i class="fas fa-user"></i></span>-->
+<!--&lt;!&ndash;                <div class="inner grid grid-cols-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input name="adults" type="number" placeholder="2 adults">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input name="children" type="number" placeholder="0 children">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input name="rooms" type="number" placeholder="1 room">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <div class="right-icons flex flex-col ml-1 mr-2">-->
+<!--                    <span class="w-4 h-4"><i class="fas fa-chevron-up"></i></span>-->
+<!--                    <span class="w-4 h-4 mb-4 md:mb-0 sm:mb-0"><i class="fas fa-chevron-down"></i></span>-->
+<!--                </div>-->
+<!--            </div>-->
+            <button type="submit">Search</button>
+        </form>
+
+<!--        <div class="work flex items-center mt-5">-->
+<!--            <input type="checkbox">-->
+<!--            <p class="mt-4 ml-2">I'm travelling for work</p>-->
+<!--        </div>-->
+
+    </div>
+
+    <!--Best by clients-->
+
+    {% if contextlist %}
+    <div class="best px-10 lg:px-24 sm:px-10 md:px-10 py-5">
+        <h3 class="my-5">Places guests love</h3>
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 justify-center items-center">
+                {% for contextlist in contextlist %}
+        <a href="{{ contextlist.bookinglink }}" style="text-decoration: none; cursor: pointer; :hover{text-decoration: none; } " target="_blank">
+            <div class="card card-home">
+                 {% for picture in contextlist.pictures %}
+                <img src="{{ picture }}" alt="" style="width: 379px;height: 340px;">
+
+                 {% endfor %}
+
+
+                <div class="card-details mt-3">
+                    <div class="reviews flex flex-col flex-col justify-between">
+                        <p>{{ contextlist.name }}</p>
+<!--                        <h5>City:{{ contextlist.name }}</h5>-->
+                        <h4>Starting from {{ contextlist.currency }} {{ contextlist.ammount }}</h4>
+                        <div class="bottom flex space-x-1 mt-2">
+                            <span class="rating relative flex">
+                                <img src="{% static 'images/Path 47.svg' %}" alt="" class="">
+<!--                                <h6 class="z-10">9.2</h6>-->
+                            </span>
+
+                            <p>{{ contextlist.rating }} Reviews</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+
+    </div>
+        </div>
+{% else %}
+
+{% endif %}
+
+
+
+
+
+
+
+
+    <!--Property Types-->
+     <!--Best by clients-->
+    <div class="best px-10 lg:px-24 sm:px-10 md:px-10 py-5">
+<!--        <h3 class="my-5">Places guests love</h3>-->
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 justify-center items-center">
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+    <!--Discover-->
+    <div class="discover mx-24 py-8 relative flex flex-col items-center justify-center">
+<!--        <h3 class="text-center">Hey there, find vacation homes <br/>for your next trip</h3>-->
+<!--        <button class="py-4 mt-10">Discover homes</button>-->
+    </div>
+
+<script>
+
+const searchFieid = document.querySelector("#searchField");
+
+// app-table const tableOutput = document.querySelector(".table-output"): tableoutput.style.display = "none";
+
+searchField.addEventListener("keyup", (e)=> {
+    const searchValue = e.target.value;
+
+    if (searchValue.trim().length > 0) {
+        console.log("searchValue", searchValue);
+
+
+    }
+
+    fetch("/flightsearch", {
+
+        body: JSON.stringify({searchText: searchValue}),
+        method: "POST",
+
+    })
+
+        .then((res)=> res.json())
+        .then((data) => {
+
+
+
+
+            let citylist = data.citylist;
+
+
+
+
+
+
+
+               $.each(citylist, function(key,value) {
+                    $("#datalist-data").append(`<option class="px-3 py-2 border-b border-gray-200">${value.cityname}, ${value.citycode}</option>`);
+                    console.log(value.cityname);
+                });
+
+
+
+        });
+
+    });
+
+</script>
+
+{% endblock %}

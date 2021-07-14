@@ -1,0 +1,6 @@
+.login-header {
+    @extend .register-header;
+}
+.login-form-area {
+    @extend .register-form-area;
+}

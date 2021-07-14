@@ -1,0 +1,336 @@
+body {
+font-size:24px;
+
+}
+
+.flights-panel {
+    min-height: 400px;
+    background-color: $primary_clr_2;
+    //overflow-x: hidden;
+    h3 {
+        font-size: 34px;
+        color: $txt_clr_dark;
+        font-weight: 600;
+    }
+    
+    form {
+        color: $txt_clr_dark;
+        width: 100%;
+        .dropdowns {
+            .drops {
+                color: $txt_clr_dark;
+                font-size: 18px;
+                font-weight: 600;
+                border: none;
+                outline: none;
+                select {
+                    /* styling */
+                    background: transparent;
+                    border: none;
+                    display: inline-block;
+                    cursor: pointer;
+                    font-size: 18px !important;
+                    line-height: 1.5em;
+                    padding: 0.5em 1em 0.5em 1em;
+                    /* reset */
+                  
+                    margin: 0;      
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+
+                    option[selected] {
+                        padding: 18px;
+                        background-color: $primary_clr_2 !important;
+                    }
+                    option {
+                        font-size: 14px !important;
+                        padding: 20px;
+                    }
+                    option[selected] span {
+                        display: none;
+                    }
+                }
+            }
+        }        
+        input {
+            min-width: 20px !important;
+            border: none;
+            outline: none;
+            &::placeholder {
+                font-size: 20px;
+            }
+        }
+        .destinations, .dates {
+            height: 80px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid #F06400;
+            border-radius: 5px;
+        }
+        .destinations {
+            span {
+                font-size: 20px;
+                height: 80px;
+                width: 60px;
+                background: #FFFFFF 0% 0% no-repeat padding-box;
+                border: 2px solid #F06400;
+                border-radius: 5px;
+            }
+            
+            .autocomplete-items {
+                max-height: 210px !important;
+                width: 110%;
+                margin-top: 1.6em;
+                overflow-y: auto;
+                position: absolute;
+                border: 1px solid #d4d4d4;
+                border-top: none;
+                z-index: 99;
+                /*position the autocomplete items to be the same width as the container:*/
+                top: 100%;
+                left: -1.1em;
+                right: 0;
+                div {
+                    color: $txt_clr_dark;
+                    padding: 10px;
+                    cursor: pointer;
+                    background-color: #fff;
+                    border-bottom: 1px solid #d4d4d4;
+                    &:hover {
+                        background-color: $accent_clr;
+                        color: $txt_clr_light;
+                    }
+                }
+            }
+            .autocomplete-active {
+                /*when navigating through the items using the arrow keys:*/
+                background-color: $accent_clr !important;
+                color: $txt_clr_light;
+            }
+
+        }
+        .dates {
+            img {
+                width: 24px;
+                height: 24px;
+            }
+            .spacer {
+                width: 4px;
+                height: 40px;
+                background: #dfdfdf;
+            }
+            input {
+                min-width: 30px;
+                &::placeholder {
+                    text-align: left;
+                    margin-left: 10px;
+                }
+            }
+        }
+        input {
+            &::placeholder {
+            color: $primary_clr_1 !important;
+            }
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator{
+            cursor: pointer;
+            filter: brightness(50%) !important;
+        }
+        button {
+            background: $accent_clr;
+            font-size: 20px;
+            color: $primary_clr_2;
+            height: 80px;
+            border: 2px solid $accent_clr;
+            padding: 0 45px !important;
+        }
+    }
+}
+
+.flight-results {
+    min-height: 400px;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 2em;
+    p,h1,h2,h3,h6 {
+        color: $txt_clr_dark;
+    }
+    .filter {
+        border: 1px solid $accent_clr;
+        width: auto;
+        height: fit-content;
+        h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: $primary_clr_1;
+        }
+        .filter-class {
+            .checks {
+               p {
+                    font-size: 18px;
+                    font-weight: 300;
+                    color: $primary_clr_1;
+                } 
+                input {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .flight-result-items {
+        .flight-result-item {
+            border: 1px solid gray;
+            .button,button {
+                color: white;
+                background-color: $accent_clr;
+                padding: .5em 2em;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .flights-panel {
+        form {
+            .dropdowns {
+                width: 80vw;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr;
+                .drops {
+                    overflow: hidden;
+                }
+                select {
+                    width: 100%;
+                    font-size: 16px;
+                    line-height: .2em;
+                    padding: 0.2em;
+                }
+            }
+            .bottom-form {
+                flex-direction: column;
+                .destinations {
+                    display: grid !important;
+                    grid-template-columns: 1fr auto 1fr;
+                    margin-bottom: .8em;
+                    span {
+                        padding: 0;
+                        border-radius: 0;
+                        height: 78px;
+                    }
+                }
+                .dates {
+                    display: grid !important;
+                    grid-template-columns: 1fr auto 1fr;
+                    margin-bottom: .8em;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .flights-panel {
+        form {
+            input {
+                width: 100%;
+            }
+            .dropdowns {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr;
+                .drops {
+                    overflow: hidden;
+                }
+                select {
+                    width: 100%;
+                    font-size: 16px;
+                    line-height: .8em;
+                    padding: 0.2em .8em 0.2em .8em;
+                }
+            }
+        }
+    }
+    .flight-results {
+        min-height: 400px;
+        grid-template-columns: 1fr;
+        .flight-result-item {
+            padding: 10px;
+            h3 {
+                font-size: 1.3em;
+            }
+            h2 {
+                font-size: 1.1em;
+            }
+            h6 {
+                font-size: .8em;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 550px) {
+    .flights-panel {
+        h3 {
+            font-size: 24px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        form {
+            input {
+                width: 100%;
+                &::placeholder {
+                    font-size: 16px;
+                }
+            }
+            .dropdowns {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 1fr;
+                .drops {
+                    overflow: hidden;
+                    span {
+                        font-size: 16px;
+                    }
+                }
+                select {
+                    width: 100%;
+                    font-size: 16px;
+                    line-height: .8em;
+                    padding: 0.2em .8em 0.2em .8em;
+                }
+            }
+            .bottom-form {
+                .destinations {
+                    display: grid !important;
+                    grid-template-columns: 1fr;
+                    grid-gap: 1em;
+                    .icon-area {
+                        display: none;
+                    }
+                    input {
+                        font-size: 13px !important;
+                    }
+                    .autocomplete-items {
+                        div {
+                            font-size: 13px !important;
+                        }
+                    }
+                }
+                .dates {
+                    display: grid !important;
+                    grid-template-columns: 1fr;
+                    grid-gap: 2em;
+                    height: auto !important;
+                    padding: .7em;
+                    .spacer {
+                        display: none;
+                    }
+                    span {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

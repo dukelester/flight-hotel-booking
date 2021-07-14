@@ -1,0 +1,461 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    margin-top: auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    #align-items: center;
+    background-color: #f26b17;
+    color: #fff;
+    /* font-family: "Agency FB"; */
+    opacity: 1;
+    z-index: 4;
+    width: 100%;
+    height: 120px;
+    flex-wrap: wrap;
+}
+
+.brandname {
+    font-size: 1.5rem;
+    #text-transform: uppercase;
+    cursor: pointer;
+    background-color: #f26b17;
+    height: 60px;
+    margin-left: 120px;
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    width: 30%;
+}
+
+.brandname h1 {
+    margin-right: 35%;
+}
+
+.register {
+    width: 50%;
+    height: 60px;
+    background-color: #f26b17;
+    align-self: end;
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+    #margin-right: 80px;
+}
+
+.register a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.services {
+    width: 100%;
+    height: 60px;
+    background-color: #f26b17;
+    align-self: end;
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+    #justify-content: space-between;
+}
+
+.services .servicons {
+    height: 20px;
+    margin: 5px;
+    margin-left: 20px;
+}
+
+.services .servicons:nth-child(1) {
+    margin-left: 120px;
+}
+
+.flag {
+    height: 17px;
+    margin: 15px;
+}
+
+.register button {
+    margin: 10px;
+    background-color: #0b3b87;
+    color: #fff;
+    border: none;
+    width: 80px;
+    padding: 5px 20px;
+    height: auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.register .button1 {
+    border: 1px solid #fff;
+    background-color: #f26b17;
+    width: 130px;
+}
+
+
+/* .firefly:hover {
+  text-shadow:  0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 40px #fff,
+                0 0 120px #fff;
+} */
+
+.links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f26b17;
+    height: 60px;
+}
+
+.bookings {
+    background-color: #fff;
+    height: 60px;
+    width: 100%;
+    position: relative;
+    top: 60px;
+}
+
+.links li {
+    list-style: none;
+}
+
+.links li a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    display: block;
+    text-transform: uppercase;
+}
+
+.links li:hover {
+    background-color: rgb(9, 136, 247);
+}
+
+.togglebutton {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 38px;
+    height: 21px;
+}
+
+.links2 {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    background-color: #fff;
+}
+
+.togglebutton .bar {
+    z-index: 4;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width:400px) {
+    .togglebutton {
+        display: flex;
+    }
+    .links {
+        width: 70%;
+        background-color: #fff;
+        height: 60px;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar .links ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar .links li {
+        text-align: center;
+    }
+    .links li a {
+        padding: .5rem 1rem;
+    }
+    .links.active {
+        display: flex;
+    }
+}
+
+.active {
+    background-color: #085CA6;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    #justify-content: center;
+    #align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.container .card {
+    position: relative;
+    max-width: 300px;
+    height: 215px;
+    background: #fff;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.container .card:hover {
+    height: 420px;
+}
+
+.container .card .imagebox {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    top: -60px;
+    left: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container .card .imagebox img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.container .card .content {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color: #111;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.container .card:hover .content {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+    margin-top: -40px;
+    transition-delay: 0.3s;
+}
+
+
+/* These classes override the default bootstrap classes in the booking form */
+
+.submitbtn {
+    background-color: #0b3b87 !important;
+}
+
+.booknow {
+    color: #0b3b87 !important;
+}
+
+
+/* 
+second card design */
+
+.cards {
+    position: relative;
+    max-width: 300px;
+    height: 215px;
+    background: #fff;
+    margin-bottom: 80px;
+    margin-top: 70px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.cards img {
+    position: relative;
+    max-width: 300px;
+    height: 215px;
+}
+
+.cards h1 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.cards h2 {
+    font-size: 17px;
+    font-color: grey;
+}
+
+.container2 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    #justify-content: center;
+    #align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    #padding: 30px;
+    min-height: 50vh;
+    background-color: #fff;
+}
+
+.cattitle {
+    margin-top: 100px;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.propertytype {
+    margin-top: 0px;
+    position: relative;
+    max-width: 300px;
+    height: 215px;
+    background: #fff;
+    margin-bottom: 80px;
+    cursor: pointer;
+}
+
+.destinations {
+    min-height: 50vh;
+    width: 100%;
+    #background-color: black;
+    display: flex;
+    #justify-content: center;
+    #align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.discover {
+    min-height: 50vh;
+    width: 100%;
+    #background-color: blue;
+    display: flex;
+    #justify-content: center;
+    #align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.fa-twitter-square {
+    z-index: 4;
+    width: 2%;
+    color: blue;
+    align-self: center;
+}
+
+.fa-instagram {
+    color: pink;
+    align-self: end;
+}
+
+.fa-facebook-square {
+    z-index: 4;
+    color: purple;
+    align-self: start;
+}
+
+.brandnamefooter {
+    color: #fff;
+    padding-top: 87px;
+    z-index: 3;
+    /* font-family: "Agency FB"; */
+    align-self: left;
+    position: relative;
+    top: -60px;
+}
+
+.fa-mobile {
+    position: relative;
+    top: -30px;
+    z-index: 4;
+    color: white;
+    align-self: start;
+}
+
+.fa-envelope {
+    position: relative;
+    top: -80px;
+    z-index: 4;
+    color: white;
+    align-self: start;
+    vertical-align: middle;
+}
+
+.email {
+    font-size: 1em;
+    /* font-family: "Agency FB"; */
+    color: #fff;
+    z-index: 3;
+    align-self: start;
+    margin-left: 30px;
+    position: relative;
+    top: -120px;
+    text-decoration: none;
+}
+
+.phoneno {
+    position: relative;
+    top: -63px;
+    font-size: 1em;
+    /* font-family: "Agency FB"; */
+    color: #fff;
+    align-self: start;
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+.copyright {
+    /* font-family: "Agency FB"; */
+    font-size: 0.7em;
+    color: #fff;
+    position: relative;
+    top: -30PX;
+}
+
+.footer {
+    color: #fff;
+    text-align: center;
+    background-color: #f26b17;
+    width: 100%;
+    z-index: 1;
+    margin-top: auto;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    opacity: 1.0;
+}

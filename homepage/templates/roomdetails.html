@@ -1,0 +1,275 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBleF4S3LB0gTDn4tHGQjR-n-lf6JG8NG4&callback=initMap&libraries=&v=weekly" async></script>
+
+
+
+         <div class="path px-24 py-5 flex items-center justify-start space-x-4">
+            <p>Home</p>
+            <span><i class="fas fa-chevron-right"></i></span>
+             {% for i in mycontext.citycode%}
+            <p>{{ i }}</p>
+             {% endfor %}
+            <span><i class="fas fa-chevron-right"></i></span>
+            <h5 class=""><p>{{ mycontext.hotelname }}</p></h5>
+            <span><i class="fas fa-chevron-right"></i></span>
+             <h5>{{ mycontext.roomcat }}</h5>
+
+        </div>
+
+        <!--Main page content-->
+        <div class="main-content px-24 pb-10">
+            <div class="sidebar">
+                <!--form-->
+                <div class="search-form p-10">
+                    <h3>Search</h3>
+                    <form class="space-y-5 mt-4">
+                        <div>
+                            <label for="dest">Destination/property name:</label>
+                            <div class="inputs flex items-center">
+                                <span><i class="fas fa-search"></i></span>
+                                <input type="text" id="dest" placeholder="  Diani Beach">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="in">Check-in Date</label>
+                            <div class="inputs flex items-center">
+                                <img src="{% static 'images/calendar-alt-regular.svg' %}" alt="">
+                                <input type="text" id="in" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="  Check-in Date">
+                                <span class="ml-auto"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="out">Check-out Date</label>
+                            <div class="inputs flex items-center">
+                                <img src="{% static 'images/calendar-alt-regular.svg' %}" alt="">
+                                <input type="text" id="out" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="  Check-out Date">
+                                <span class="ml-auto"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <div class="numbers flex justify-between items-center">
+                            <input type="number" placeholder="2 adults">
+                            <div class="chevs flex flex-col ml-auto">
+                                <span><i class="fas fa-chevron-up"></i></span>
+                                <span><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="smaller flex">
+                                <input class="col-span-1" type="number" placeholder="No children">
+                                <div class="chevs flex flex-col ml-auto">
+                                    <span><i class="fas fa-chevron-up"></i></span>
+                                    <span><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                            </div>
+                            <div class="smaller flex">
+                                <input type="number" placeholder="1 room">
+                                <div class="chevs flex flex-col ml-auto">
+                                    <span><i class="fas fa-chevron-up"></i></span>
+                                    <span><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work mt-3">
+<!--                            <input type="checkbox" name="" id="">-->
+<!--                            <label for="">I'm travelling for work</label>-->
+                        </div>
+                        <button>Search</button>
+                    </form>
+                </div>
+                <div id="map" style="background-color:red;" class="map relative flex items-center justify-center my-4">
+
+<!--                    <img src="./assets/map.jpg" alt="">-->
+<!--                    <button>Show on map</button>-->
+                </div>
+                <div class="item-reviews">
+                    <h4></h4>
+                    <div class="rate flex space-x-4 my-3">
+                        <span class="rating relative flex">
+
+                        </span>
+                        <div class="flex flex-col space-y-1">
+
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+<!--                        <h4>Bathroom</h4>-->
+                        <!--loop through each review-->
+<!--                        <div v-for="review in reviews" class="review-item mb-4 border-b-2 border-gray-500 pb-3">-->
+<!--                            <p class="mb-3">"{{ review.text }}"</p>-->
+<!--                            <div class="user flex items-center justify-self-start space-x-3">-->
+<!--                                <img src="./user.jpg" alt="" class="user-img">-->
+<!--                                <div class="details">-->
+<!--                                    <h4>{{ review.user }}</h4>-->
+<!--                                    <span class="flex items-center space-x-2">-->
+<!--                                        <img src="./assets/flag_kenya.png" alt="" class="flag">-->
+<!--                                        <p>{{ review.country }}</p>-->
+<!--                                    </span>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <button class="w-full">View all reviews</button>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-result">
+                <div class="top-titles">
+                    <h4>{{ mycontext.name }}</h4>
+                    <div class="flex items-center justify-between mt-2">
+                        <div class="right flex space-x-3 items-center mb-2">
+                            <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            <h5> {{ cityname }}, {{ line }}</h5>
+                            <a href="#map" class="text-blue-700">Show on map</a>
+                        </div>
+                        <div class="left flex space-x-8 items-center">
+<!--                            <span><i class="fas fa-heart"></i></span>-->
+<!--                            <span><i class="fas fa-share-alt"></i></span>-->{% for i in mycontext.offerid  %}
+                            <form method="post" action="{% url 'bookingform' i %}">{% csrf_token %}
+                                <input  name="hoteldetails" value="{{ hoteldetails }}" type="hidden">
+                                <input  name="room" value="{{ room }}" type="hidden">
+
+                                 <button style="background-color:#F06400; padding:20px;" type="submit"  class="bookBtn flex items-center justify-center">Book Now</input>
+                            </form>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+<!--                    <div class="boxes mt-4">-->
+<!--                        <img src="./assets/2016-06-07_DosInglesesPier_ROW11721373925_1920x1080.png" alt="" class="w-full h-full object-cover">-->
+<!--                    </div>-->
+                    <div class="information mt-8">
+                        <h3>Information</h3>
+                        <div class="texts space-y-4 mt-4">
+                            <p>{{ mycontext.description.text }}</p>
+                        </div>
+                    </div>
+
+                    <div class="availability mt-3">
+
+                        <h3>Availability</h3>
+                        <div class="card p-5">
+                            <div class="in space-y-1">
+                                <h5 class="mb-2">Check-in date</h5>
+                                {% for i in mycontext.checkindate %}
+                                <h6>{{ i }}</h6>
+                                {% endfor %}
+<!--                                <p>From 12:00PM</p>-->
+                            </div>
+                            <div class="out space-y-1">
+
+                                {{ mycontext.mainhoteldetails }}
+                                <h5 class="mb-2">Check-out date</h5>
+                                {% for i in mycontext.checkout %}
+                                <h6>{{  i }}</h6>
+<!--                                <p>night stay</p>-->
+                                {% endfor %}
+                            </div>
+                            <div class="more space-x-3 flex justify-center items-start">
+                                <div class="left">
+                                    <h5>Guests</h5>
+                                    {% for i  in mycontext.guests %}
+                                    {% for key,value in i.items %}
+                                    <h6>{{ key }} {{ value }}</h6>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </div>
+                                <div class="right">
+                                    <h5>Amount  </h5>
+
+                                    <h6>{% for currency in mycontext.currency %} {{ currency }} {% endfor %} {% for total in mycontext.total %} {{ total }} {% endfor %} </h6>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <input id="cordinates" type="hidden" value="{{ latitude }} {{ longitude }}">
+<script>
+    function initMap() {
+
+           var lat ='{{latitude }}'
+           var long= '{{ longitude }}'
+           window.console.log(lat, 'lat');
+          const ourplace = new google.maps.LatLng( lat, long );
+
+          const map = new google.maps.Map(document.getElementById("map"), {
+            center: ourplace,
+            zoom: 3,
+          });
+          const coordInfoWindow = new google.maps.InfoWindow();
+          coordInfoWindow.setContent(createInfoWindowContent(ourplace, map.getZoom()));
+          coordInfoWindow.setPosition(ourplace);
+          coordInfoWindow.open(map);
+          map.addListener("zoom_changed", () => {
+            coordInfoWindow.setContent(createInfoWindowContent(ourplace, map.getZoom()));
+            coordInfoWindow.open(map);
+          });
+}
+const TILE_SIZE = 256;
+
+function createInfoWindowContent(latLng, zoom) {
+  const scale = 1 << zoom;
+  const worldCoordinate = project(latLng);
+  const pixelCoordinate = new google.maps.Point(
+    Math.floor(worldCoordinate.x * scale),
+    Math.floor(worldCoordinate.y * scale)
+  );
+  const tileCoordinate = new google.maps.Point(
+    Math.floor((worldCoordinate.x * scale) / TILE_SIZE),
+    Math.floor((worldCoordinate.y * scale) / TILE_SIZE)
+  );
+  return []
+
+}
+
+// The mapping between latitude, longitude and pixels is defined by the web
+// mercator projection.
+function project(latLng) {
+  let siny = Math.sin((latLng.lat() * Math.PI) / 180);
+  // Truncating to 0.9999 effectively limits latitude to 89.189. This is
+  // about a third of a tile past the edge of the world tile.
+  siny = Math.min(Math.max(siny, -0.9999), 0.9999);
+  return new google.maps.Point(
+    TILE_SIZE * (0.5 + latLng.lng() / 360),
+    TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI))
+  );
+}
+
+</script>
+
+        <!--Similar properties-->
+<!--{%  for  mycontextdict in mycontextdict %}-->
+<!--{{ mycontextdict }}-->
+<!--{% endfor %}-->
+<!--{{ mycontext }}-->
+<!--{% endblock %}-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

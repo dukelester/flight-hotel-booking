@@ -1,0 +1,211 @@
+.hire-panel {
+    height: 880px;
+    background-color: $primary_clr_2;
+    h3 {
+        font-size: 34px;
+        color: $txt_clr_dark;
+        font-weight: 600;
+    }
+    .radios {
+        font-size: 20px;
+        font-weight: 600;
+        input[type="radio"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            &:checked {
+                color: $accent_clr !important;
+                background-color: $accent_clr !important;
+            }
+        }
+    }
+    form {
+        color: $txt_clr_dark;
+        margin: 0;
+        padding: 0;
+
+        input {
+            &::placeholder {
+                font-size: 20px;
+                font-weight: 300;
+                color: $primary_clr_1;
+                text-align: left;
+                margin-left: 10px;
+            }
+        }
+        .inputs {
+            display: grid;
+            grid-template-columns: 3fr 2fr 2fr.5fr;
+            .inner-inputs {
+                height: 80px;
+                background: #FFFFFF 0% 0% no-repeat padding-box;
+                border: 2px solid #F06400;
+                border-radius: 5px;
+                input {
+                    outline: none;
+                }
+            }
+            .separator {
+                height: 40px;
+                width: 3px;
+                background-color: #cecece;
+            }
+            .text {
+                width: auto;
+            }
+        }
+        .destinations {    
+            input {
+                width: 100% !important;
+            }        
+            .autocomplete-items {
+                max-height: 212px !important;
+                width: 110%;
+                margin-top: 0 !important;
+                overflow-y: auto;
+                position: absolute;
+                border: 1px solid #d4d4d4;
+                border-top: none;
+                z-index: 99;
+                /*position the autocomplete items to be the same width as the container:*/
+                top: 100%;
+                left: -.7em;
+                right: 0;
+                div {
+                    color: $txt_clr_dark;
+                    padding: 10px;
+                    cursor: pointer;
+                    background-color: #fff;
+                    border-bottom: 1px solid #d4d4d4;
+                    &:hover {
+                        background-color: $accent_clr;
+                        color: $txt_clr_light;
+                    }
+                }
+            }
+            .autocomplete-active {
+                /*when navigating through the items using the arrow keys:*/
+                background-color: $accent_clr !important;
+                color: $txt_clr_light;
+            }
+
+        }
+        .dates {
+            img {
+                width: 24px;
+                height: 24px;
+            }
+            input {
+                width: 100%;
+                outline: none;
+            }
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator{
+            cursor: pointer;
+            filter: brightness(50%) !important;
+        }
+        button {
+            background: $accent_clr;
+            font-size: 20px;
+            color: $primary_clr_2;
+            height: 80px;
+            border: 2px solid $accent_clr;
+            padding: 0 25px;
+            border-radius: 5px;
+        }
+        .check {
+            input {
+                width: 20px;
+                height: 20px;
+            }
+            label {
+                font-size: 20px;
+                color: $primary_clr_1;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    .hire-panel {
+        min-height: 680px;
+        .radios {
+            font-size: 18px;
+        }
+        form {
+            input {
+                width: 100%;
+                &::placeholder {
+                    font-size: 18px;
+                }
+            }
+            .inputs {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-row-gap: 1em;
+            }
+            .check {
+                label {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .hire-panel {
+        height: auto;
+        padding-top: 3em;
+        padding-bottom: 3em;
+        h3 {
+            font-size: 28px;
+        }
+        .radios {
+            flex-direction: column;
+            label {
+                font-size: 16px !important;
+            }
+        }
+        form {
+            input {
+                &::placeholder {
+                    font-size: 12px;
+                }
+            }
+            .inputs {
+                display: grid;
+                grid-template-columns: 100%;
+                grid-row-gap: 1em;
+                .destinations {
+                    display: grid !important;
+                    grid-template-columns: 1fr;
+                    grid-gap: 2em;
+                    min-height: 80px !important;
+                    margin: .7em initial !important;
+                    .icon-area {
+                        display: none;
+                    }
+                    input {
+                        font-size: 13px !important;
+                    }
+                    .autocomplete-items {
+                        div {
+                            font-size: 13px !important;
+                        }
+                    }
+                }
+                .separator {
+                    display: none;
+                }
+            }
+            .check {
+                label {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

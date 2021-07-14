@@ -1,0 +1,424 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}}
+        <!--Main page content-->
+        <div class="main-content px-24 flex">
+            <div class="sidebar">
+                <!--form-->
+                <div class="search-form p-10">
+                    <h3>Search</h3>
+                    <form  method= 'POST' action="search" class="space-y-5 mt-4">{% csrf_token %}
+                        <div>
+                            <label for="dest">Destination/property name:</label>
+                            <div class="inputs flex items-center">
+                                <span><i class="fas fa-search"></i></span>
+                                <input required name="citycode" type="text" id="searchField" list="datalist-data" placeholder="Enter Destination">
+                                 <datalist class="h-8" id="datalist-data"></datalist>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="in">Check-in Date</label>
+                            <div class="inputs flex items-center">
+                                <img src="{% static 'images/calendar-alt-regular.svg' %}" alt="">
+                                <input required name="checkindate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Check-in">
+                                <span class="ml-auto"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="out">Check-out Date</label>
+                            <div class="inputs flex items-center">
+                                <img src="{% static 'images/calendar-alt-regular.svg' %}" alt="">
+                                 <input required name="checkoutdate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Check-out">
+                                <span class="ml-auto"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <div class="numbers flex justify-between items-center">
+<!--                            <input required name="adults" type="number" placeholder="2 adults">-->
+<!--                            <div class="chevs flex flex-col ml-auto">-->
+<!--                                <span><i class="fas fa-chevron-up"></i></span>-->
+<!--                                <span><i class="fas fa-chevron-down"></i></span>-->
+<!--                            </div>-->
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="smaller flex">
+<!--                                <input name="children" class="col-span-1" type="number" placeholder="No children">-->
+<!--                                <div class="chevs flex flex-col ml-auto">-->
+<!--                                    <span><i class="fas fa-chevron-up"></i></span>-->
+<!--                                    <span><i class="fas fa-chevron-down"></i></span>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="smaller flex">
+<!--                                <input name="rooms" type="number" placeholder="1 room">-->
+<!--                                <div class="chevs flex flex-col ml-auto">-->
+<!--                                    <span><i class="fas fa-chevron-up"></i></span>-->
+<!--                                    <span><i class="fas fa-chevron-down"></i></span>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                        <div class="work mt-3">
+<!--                            <input type="checkbox" name="" id="">-->
+<!--                            <label for="">I'm travelling for work</label>-->
+                        </div>
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+                <!--Filters-->
+                <div class="filter px-4 py-8 mt-5">
+                    <h4>Filter by:</h4>
+<!--                    <div class="filter-class">-->
+<!--                        <h4 class=" my-3">Health & safety</h4>-->
+<!--                        <div class="checks flex items-center space-x-4">-->
+<!--                            <input type="checkbox">-->
+<!--                            <p>Properties with additional health & safety measures</p>-->
+<!--                            <p class="count">36</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="filter-class">
+                        <h4 class=" my-3">Popular Filters</h4>
+                        <div class="checks flex items-center justify-between space-x-4">
+                            <div class="flex space-x-4 items-center">
+                                <input type="checkbox">
+                                <p>Price</p>
+                            </div>
+                            <p class="count mr-auto"></p>
+                        </div>
+                        <div class="checks flex items-center justify-between space-x-4">
+                            <div class="flex space-x-4 items-center">
+                                <input type="checkbox">
+                                <p>Rating</p>
+                            </div>
+                            <p class="count mr-auto"></p>
+                        </div>
+                        <div class="checks flex items-center justify-between space-x-4">
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Beach</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto"></p>-->
+                        </div>
+                        <div class="checks flex items-center justify-between space-x-4">
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Villas</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+                        </div>
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Hotels</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Guest homes</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="filter-class">-->
+<!--                        <h4 class=" my-3">Star Rating</h4>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>3 stars</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>4 stars</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto"></p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>5 strars</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Unrated</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="filter-class">-->
+<!--                        <h4 class=" my-3">Beach Access</h4>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Beachfront</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                    <div class="filter-class">-->
+<!--                        <h4 class=" my-3">Property Type</h4>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Apartments</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Villas</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto"></p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Hotels</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Vacation Homes</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Resorts</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Bed and Breakfast</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <span class="flex items-center space-x-4 mt-2 text-blue-500">-->
+<!--                            <p>show all</p>-->
+<!--                            <span class=" font-extrabold"><i class="fas fa-chevron-down"></i></span>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                    <div class="filter-class">-->
+<!--                        <h4 class=" my-3">Facilities</h4>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Parking</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Restaurant</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto"></p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Pet friendly</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Room service</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Fitness center</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Gym</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <span class="flex items-center space-x-4 mt-2 text-blue-500">-->
+<!--                            <p>show all</p>-->
+<!--                            <span class=" font-extrabold"><i class="fas fa-chevron-down"></i></span>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                    <div class="filter-class">-->
+<!--                        <h4 class=" my-3">Room Facilities</h4>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Kitchen</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Restaurant</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto"></p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Pet friendly</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Room service</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+<!--                        <div class="checks flex items-center justify-between space-x-4">-->
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Fitness center</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+<!--                        </div>-->
+                        <div class="checks flex items-center justify-between space-x-4">
+<!--                            <div class="flex space-x-4 items-center">-->
+<!--                                <input type="checkbox">-->
+<!--                                <p>Gym</p>-->
+<!--                            </div>-->
+<!--                            <p class="count mr-auto">36</p>-->
+                        </div>
+<!--                        <span class="flex items-center space-x-4 mt-2 text-blue-500">-->
+<!--                            <p>show all</p>-->
+<!--                            <span class=" font-extrabold"><i class="fas fa-chevron-down"></i></span>-->
+<!--                        </span>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-result">
+<!--                <h3 class="mb-2"> {{ ourlist.totalresults }} properties found</h3>-->
+<!--               -->
+                    {% for ourlist in ourlist %}
+<!--                  <a onclick="location.href='{% url 'hoteldetails' ourlist.hotelid %}'" style="text-decoration: none; cursor: pointer; :hover{text-decoration: none; } " target="_blank">-->
+                <div  class="result mb-3 p-3 space-x-4">
+                    <img src="{{ ourlist.media }}" alt="" class="result-img">
+
+                    <div class="result-details space-y-1">
+                        <h3>{{ ourlist.name }}</h3>
+                        <span class="links flex space-x-4 my-3">
+                            <a href="#" class="text-blue-500">{{ ourlist.cityname }}</a>
+                            <a href="#" class="text-blue-500">show map</a>
+                        </span>
+                        <div class="flex space-x-1 mb-2">
+                            <p>{{ ourlist.distancefromcenter }} {{ ourlist.dunits }} from center</p>
+
+
+                            <span>&#149</span>
+                            <p></p>
+<!--                            <span>&#149</span>-->
+<!--                            <p>Spa</p>-->
+<!--                            <span>&#149</span>-->
+<!--                            <p>Gym</p>-->
+
+                        </div>
+                        <div class="desc">
+                            <p>{{ ourlist.description }}</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="extra">
+                        <div class="review flex items-center space-x-4">
+                            <div class="text flex flex-col space-y-1">
+                                <h4>{{ ourlist.rating }} </h4>
+                                <p></p>
+                            </div>
+                            <span class="rating relative">
+                                <img src="{% static 'images/Path 47.svg' %}" alt="" class="">
+                                <h6 class="z-10"> {{ ourlist.hrating }} </h6>
+                            </span>
+                        </div>
+                        <div class="price mt-5">
+                            <div v-show=" result.book === true " class="txt mt-4">
+                                <p> {{ ourlist.guests_adults }} adults</p>
+                                <h4>{{ ourlist.price_currency }} {{ ourlist.price_total }}</h4>
+                                <p class="mb-8">Tax inclusive</p>
+                                <a href="{% url 'hoteldetails' ourlist.hotelid %}">Book Now</a>
+                            </div>
+<!--                            <button v-show=" result.book === false " @click="result.book = true">Show prices</button>-->
+                        </div>
+                    </div>
+                </div>
+                 {% empty %}
+                <h1>No results found </h1>
+                          {% endfor %}
+            </div>
+        </div>
+<script>
+
+const searchFieid = document.querySelector("#searchField");
+
+// app-table const tableOutput = document.querySelector(".table-output"): tableoutput.style.display = "none";
+
+searchField.addEventListener("keyup", (e)=> {
+    const searchValue = e.target.value;
+
+    if (searchValue.trim().length > 0) {
+        console.log("searchValue", searchValue);
+
+
+    }
+
+    fetch("/flightsearch", {
+
+        body: JSON.stringify({searchText: searchValue}),
+        method: "POST",
+
+    })
+
+        .then((res)=> res.json())
+        .then((data) => {
+
+
+
+
+            let citylist = data.citylist;
+
+
+
+
+
+
+
+               $.each(citylist, function(key,value) {
+                    $("#datalist-data").append(`<option class="px-3 py-2 border-b border-gray-200">${value.cityname}, ${value.citycode}</option>`);
+                    console.log(value.cityname);
+                });
+
+
+
+        });
+
+    });
+
+</script>
+
+{% endblock %}

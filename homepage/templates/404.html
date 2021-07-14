@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+        <div class="404-msg flex items-center px-10 lg:px-24 sm:px-10 md:px-10" style="min-height: 400px;">
+            <div class="wrapper bg-gray-200 p-8 w-full">
+                <h4 class="font-bold text-4xl">404</h4>
+                <h5 class="font-bold uppercase mt-4">oops,Page not found</h5>
+                <p class="my-6">Sorry, but the page you are looking for does not exist, has been removed, name changed or temporarily unavailable</p>
+                <a href="{% url 'index' %}" class="text-blue-700 font-bold">Back to Home Page</a>
+            </div>
+        </div>
+{% endblock %}
+

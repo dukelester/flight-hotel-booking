@@ -1,0 +1,461 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+            <div class="progress-form px-10 lg:px-24 sm:px-10 md:px-10">
+            <form action="#">
+                <div v-if="currentStep == 1" class="first">
+                    <div class="details px-4 py-2">
+                        <h4 class="text-xl font-bold mb-3">Your booking details</h4>
+                        <div class="flex justify-between">
+                            <div class="in">
+                                <h5 class="text-base font-bold">Check-in</h5>
+                                <h5 class="text-base font-bold">Fri, Nov 20,2020</h5>
+                                <p>From 12:00 PM</p>
+                            </div>
+                            <div class="out">
+                                <h5 class="text-base font-bold">Check-out</h5>
+                                <h5 class="text-base font-bold">Sat, Nov 21,2020</h5>
+                                <p>Until 11:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="one-day flex space-x-2 mt-4 mb-2 items-center">
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full" ><i class="fas fa-exclamation"></i></span>
+                            <p class="">Just one day away</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p>Total length of stay</p>
+                            <h5 class="font-extrabold">1 night</h5>
+                            <p class="text-blue-700">Travelling on different dates?</p>
+                        </div>
+                        <div class="space-y-2 mt-8">
+                            <h5 class="font-bold text-xl">Your Selection:</h5>
+                            <p>Apartment with balcony</p>
+                            <p class="text-blue-700">Change your selection</p>
+                        </div>
+                        <div class="space-y-2 mt-8">
+                            <h5 class="font-bold text-xl">Your price summary:</h5>
+                            <span class="flex justify-between mt-8">
+                                <p>Apartment with Balcony</p>
+                                <h5 class="font-bold text-base">KES 5,555</h5>
+                            </span>
+                            <span class="flex justify-between mt-4">
+                                <p>14% VAT</p>
+                                <h5 class="font-bold text-base">KES 738</h5>
+                            </span>
+                            <span class="flex justify-between mt-4">
+                                <p>2% Council tax</p>
+                                <h5 class="font-bold text-base">KES 111</h5>
+                            </span>
+                        </div>
+                        <div class="flex justify-between mt-8">
+                            <div class="block">
+                                <h5 class="text-lg font-bold">Price</h5>
+                                <p>(Your currency)</p>
+                            </div>
+                            <h5 class="text-xl font-bold">KES 6,444</h5>
+                        </div>
+                    </div>
+
+                    <div class="edits">
+                        <div class="flex space-x-4">
+                            <img src="./assets/2016-11-06_NottulnHerbst_DE-DE10405419093_1920x1080.png" alt="" class="h-auto w-64">
+                            <div class="area">
+                                <h4 class="font-bold text-3xl">Eldon Villas</h4>
+                                <div class="flex space-x-2 my-2">
+                                    <p class="border border-orange-500 p-1">Airport Shuttle</p>
+                                    <p class="border border-orange-500 p-1">Free Parking</p>
+                                    <p class="border border-orange-500 p-1">Pets Allowed</p>
+                                </div>
+                                <div class="flex items-center justify-between space-x-3">
+                                    <div class="flex items-center space-x-3">
+                                        <span><i class="fas fa-map-marker"></i></span>
+                                        <h5 class="text-xl font-bold">Ngong Road, Nairobi, Kenya</h5>
+                                    </div>
+
+                                    <a href="#" class="text-blue-500">Show on map</a>
+                                </div>
+                                <div class="checks mt-4 space-y-3">
+                                    <div class="flex space-x-4 items-center">
+                                        <span class="text-orange-600"><i class="fas fa-check"></i></span>
+                                        <p>This property is in good condiion. Guests have rated it 9.2</p>
+                                    </div>
+                                    <div class="flex space-x-4 items-center">
+                                        <span class="text-orange-600"><i class="fas fa-check"></i></span>
+                                        <p>One of our top picks in Nairobi</p>
+                                    </div>
+                                    <div class="flex space-x-4 items-center">
+                                        <span class="text-orange-600"><i class="fas fa-check"></i></span>
+                                        <p>You'll get the entire apartment for just the two of you!</p>
+                                    </div>
+                                    <h5 class="text-xl font-bold mt-4">FREE Cancellation</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrival">
+                            <h5 class="mt-3 text-xl font-bold">Enter your details</h5>
+
+                            {% if request.user.is_authenticated %}
+                            <div class="user flex items-center my-2">
+                                 <img src="{{ user.profile.profile_picture.url  }}" alt="" class="w-10 h-10 rounded-full object-cover">
+
+                                <span class="ml-2 font-semibold">{{ request.user }}</span>
+                            </div>
+                            {% else %}
+
+                            {% endif %}
+                            <h6 class="mb-2 font-medium">Almost done! Just fill in the *required info</h6>
+                        </div>
+                        <div class="form-sections mt-6">
+                            <div class="sect sect1 p-5 ">
+                                <div class="work font-bold">
+                                    <h5>Are you travelling for work</h5>
+                                    <div class="flex items-center space-x-12 mt-3">
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" value="Yes">
+                                            <h6 class="font-bold">Yes</h6>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" value="No">
+                                            <h6 class="font-bold">No</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="names mt-4">
+                                    <div class="flex space-x-8">
+                                        <div class="flex flex-col">
+                                            <label class="font-bold">First Name</label>
+                                            <input required type="text" placeholder="">
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <label class="font-bold">Last Name*</label>
+                                            <input required type="text" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="email mt-4">
+                                    <div class="flex flex-col">
+                                        <label class="font-bold">Email Address*</label>
+                                        <input required type="email" placeholder="" class=" max-w-sm">
+                                    </div>
+                                    <p class="mt-2">Confirmation email is sent to this address</p>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Confirm Email Address*</label>
+                                        <input required type="email" placeholder="" class=" max-w-sm">
+                                    </div>
+                                </div>
+                                <div class="who mt-4">
+                                    <h5 class="font-bold">Who are you booking for?</h5>
+                                    <div class="flex flex-col mt-3 space-y-1">
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" value="Yes">
+                                            <p class="font-bold">I'm the main guest</p>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" value="No">
+                                            <p class="font-bold">I'm booking for someone else</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sect sect2 p-5 mt-5">
+                                <h5 class="text-lg font-bold">Apartment with Balcony</h5>
+                                <h5 class="text-base font-bold mt-2">FREE Cancellation</h5>
+                                <div class="flex space-x-2 my-2">
+                                    <p class="border-2 border-gray-700 p-1">Airport Shuttle</p>
+                                    <p class="border-2 border-gray-700 p-1">Free Parking</p>
+                                    <p class="border-2 border-gray-700 p-1">Pets Allowed</p>
+                                    <p class="border-2 border-gray-700 p-1">Flat Screen Tv</p>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <h5 class="text-lg font-bold">Guests: </h5>
+                                    <span class="flex items-center text-xl">
+                                        <i class="fas fa-user"></i>
+                                        <i class="fas fa-user"></i>
+                                           +  <span class="text-sm"><i class="fas fa-user"></i></span>
+                                    </span>
+                                    <p>(Up to 13 years of age)</p>
+                                </div>
+                                <div class="flex flex-col mt-2">
+                                    <label class="font-bold">Full Guest Name</label>
+                                    <input required type="text" placeholder="Maxwell Otieno" class=" max-w-sm">
+                                </div>
+                                <div class="boxes flex flex-col">
+                                    <div class="flex space-x-3 items-center">
+                                        <input type="checkbox">
+                                        <div class="flex flex-col justify-end mt-4">
+                                            <h6 class="font-bold">Breakfast</h6>
+                                            <p>Enjoy a convenient breakfast at the property for KES 1,094 per person, per night.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-3 items-center">
+                                        <input type="checkbox">
+                                        <div class="flex flex-col justify-end mt-4">
+                                            <h6 class="font-bold">Make changes online to your booking</h6>
+                                            <p>Make changes or cancel this booking online for KES 0.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-3 items-center">
+                                        <input type="checkbox">
+                                        <div class="flex flex-col justify-end mt-4">
+                                            <h6 class="font-bold">I'm interested in requesting an airport shuttle</h6>
+                                            <p>We'll tell your accomodation that you're interested, so they can provide details and costs.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-3 items-center">
+                                        <input type="checkbox">
+                                        <div class="flex flex-col justify-end mt-4">
+                                            <h6 class="font-bold">I'm interested in hiring a car</h6>
+                                            <p>Make the most of your trip - check out the car hire options in your booking confirmation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sect sect3 p-5 mt-5">
+                                <h5 class="text-lg font-bold">Special Requests</h5>
+                                <p class="mt-2">Type your requests in English here- we'll share them with the property.</p>
+                                <p class="mt-2">Special requests can't be guaranteed: but the property will do it's best to meet your needs.</p>
+                                <p class="mt-2">You can always make a special request after your booking is complete!</p>
+                                <textarea cols="50" rows="4" class="max-w-xl mt-4"></textarea>
+                                <div class="flex items-center space-x-5">
+                                    <input type="checkbox">
+                                    <p>I'd like a quiet room</p>
+                                </div>
+                                <div class="flex items-center space-x-5 mb-8">
+                                    <input type="checkbox">
+                                    <p>I'd like free private parking on site</p>
+                                </div>
+                                <h5 class="text-lg font-bold mb-4">Let the property know when you plan to arrive.</h5>
+                                <p>You might hear back from the property about your arrival time.</p>
+                                <div class="flex space-x-8 items-center mt-2">
+                                    <h5 class="text-lg font-bold">24-hour help desk</h5>
+                                    <p>help whenever you need it! You can</p>
+                                    <h5 class="text-lg font-bold">check in from 12:00 PM</h5>
+                                </div>
+                                <div class="flex space-x-4 items-center mt-2">
+                                    <h5 class="text-lg font-bold">Arrival time: Friday, November 20, 2020</h5>
+                                    <select class="bg-white p-2">
+                                        <option>I don't know</option>
+                                        <option>Morning</option>
+                                        <option>Afternoon</option>
+                                        <option>Evening</option>
+                                    </select>
+                                </div>
+                                <p class="mt-4">For a warm welcome and a smooth check-in, let your host know your expected arrival time in advance. You cn do that here or contact them directly using the details provided in your confirmation.</p>
+                                <div class="flex flex-col items-end">
+                                    <button @click="goToStep2" class="py-4 px-8 text-white flex space-x-2">
+                                        <p>Final details</p>
+                                        <span><i class="fas fa-arrow-right"></i></span>
+                                    </button>
+                                    <p class="mt-2">Let's go to the last step</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="currentStep == 2" class="second">
+                    <div class="details px-4 py-2">
+                        <h4 class="text-xl font-bold mb-3">Your booking details</h4>
+                        <div class="flex justify-between">
+                            <div class="in">
+                                <h5 class="text-base font-bold">Check-in</h5>
+                                <h5 class="text-base font-bold">Fri, Nov 20,2020</h5>
+                                <p>From 12:00 PM</p>
+                            </div>
+                            <div class="out">
+                                <h5 class="text-base font-bold">Check-out</h5>
+                                <h5 class="text-base font-bold">Sat, Nov 21,2020</h5>
+                                <p>Until 11:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="one-day flex space-x-2 mt-4 mb-2 items-center">
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full" ><i class="fas fa-exclamation"></i></span>
+                            <p class="">Just one day away</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p>Total length of stay</p>
+                            <h5 class="font-extrabold">1 night</h5>
+                            <p class="text-blue-700">Travelling on different dates?</p>
+                        </div>
+                        <div class="space-y-2 mt-8">
+                            <h5 class="font-bold text-xl">Your Selection:</h5>
+                            <p>Apartment with balcony</p>
+                            <p class="text-blue-700">Change your selection</p>
+                        </div>
+                        <div class="space-y-2 mt-8">
+                            <h5 class="font-bold text-xl">Your price summary:</h5>
+                            <span class="flex justify-between mt-8">
+                                <p>Apartment with Balcony</p>
+                                <h5 class="font-bold text-base">KES 5,555</h5>
+                            </span>
+                            <span class="flex justify-between mt-4">
+                                <p>14% VAT</p>
+                                <h5 class="font-bold text-base">KES 738</h5>
+                            </span>
+                            <span class="flex justify-between mt-4">
+                                <p>2% Council tax</p>
+                                <h5 class="font-bold text-base">KES 111</h5>
+                            </span>
+                        </div>
+                        <div class="flex justify-between mt-8">
+                            <div class="block">
+                                <h5 class="text-lg font-bold">Price</h5>
+                                <p>(Your currency)</p>
+                            </div>
+                            <h5 class="text-xl font-bold">KES 6,444</h5>
+                        </div>
+                    </div>
+                    <div class="edits">
+                        <div class="flex space-x-4">
+                            <img src="./assets/2016-11-06_NottulnHerbst_DE-DE10405419093_1920x1080.png" alt="" class="h-auto w-64">
+                            <div class="area">
+                                <h4 class="font-bold text-3xl">Eldon Villas</h4>
+                                <div class="flex space-x-2 my-2">
+                                    <p class="border border-orange-500 p-1">Airport Shuttle</p>
+                                    <p class="border border-orange-500 p-1">Free Parking</p>
+                                    <p class="border border-orange-500 p-1">Pets Allowed</p>
+                                </div>
+                                <div class="flex items-center justify-between space-x-3">
+                                    <div class="flex items-center space-x-3">
+                                        <span><i class="fas fa-map-marker"></i></span>
+                                        <h5 class="text-xl font-bold">Ngong Road, Nairobi, Kenya</h5>
+                                    </div>
+
+                                    <a href="#" class="text-blue-500">Show on map</a>
+                                </div>
+                                <div class="checks mt-4 space-y-3">
+                                    <div class="flex space-x-4 items-center">
+                                        <span class="text-orange-600"><i class="fas fa-check"></i></span>
+                                        <p>This property is in good condiion. Guests have rated it 9.2</p>
+                                    </div>
+                                    <div class="flex space-x-4 items-center">
+                                        <span class="text-orange-600"><i class="fas fa-check"></i></span>
+                                        <p>One of our top picks in Nairobi</p>
+                                    </div>
+                                    <div class="flex space-x-4 items-center">
+                                        <span class="text-orange-600"><i class="fas fa-check"></i></span>
+                                        <p>You'll get the entire apartment for just the two of you!</p>
+                                    </div>
+                                    <h5 class="text-xl font-bold mt-4">FREE Cancellation</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrival">
+                            <h5 class="mt-3 text-xl font-bold">Enter your details</h5>
+                            <h6 class="my-3 font-medium">Almost done! Just fill in the *required info</h6>
+                        </div>
+                        <div class="form-sections">
+                            <div class="sect p-5">
+                                <div class="grid grid-cols-2 gap-8">
+                                    <div class="flex flex-col">
+                                        <label class="font-bold">Country/Region</label>
+                                        <select class="bg-white p-2">
+                                            <option>Kenya</option>
+                                            <option>Uganda</option>
+                                            <option>Tanzania</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <label class="font-bold">Physical Address</label>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                                <div class="flex flex-col mt-2">
+                                    <label class="font-bold">Telephone (Mobile number prefered)*</label>
+                                    <div class="flex bg-white space-x-5 content max-w-xs">
+                                        <select class="p-1">
+                                            <option>Kenya</option>
+                                            <option>Uganda</option>
+                                            <option>Tanzania</option>
+                                        </select>
+                                        <input type="text" placeholder="+254">
+                                    </div>
+                                </div>
+                                <p class="mt-4">So the property can reach you</p>
+                            </div>
+                            <h5 class="mt-3 text-xl font-bold">Complete your payments</h5>
+                            <p class="my-4 font-medium">Choose your preffered payment method and proceed as prompted.</p>
+                            <div class="sect p-5">
+                                <div class="flex flex-col">
+                                    <label class="font-bold">Physical Address</label>
+                                    <select class="max-w-sm">
+                                        <option value="mpesa">Mpesa</option>
+                                        <option value="visa">Visa</option>
+                                    </select>
+                                </div>
+                                <div class="flex flex-col mt-4">
+                                    <label class="font-bold">Telephone (mobile number preffered)*</label>
+                                    <input type="text" placeholder="+254" class="max-w-sm">
+                                </div>
+                                <div class="flex-col space-y-0 mt-2">
+                                    <div class="flex items-center space-x-4">
+                                        <input type="checkbox">
+                                        <p>Yes, I want free paperless confirmation (recommended)</p>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <input type="checkbox">
+                                        <p>Yes, Sky-Swift can send me special promotions via text</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="currentStep == 3">3</div>
+            </form>
+        </div>
+
+
+    </div>
+    <!--Scripts-->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                currentStep: 1,
+                tb1complete: false,
+                tb2complete: false,
+                tb3complete: false
+            },
+            methods: {
+                goToStep2: function() {
+                    this.currentStep = 2;
+                    this.tb1complete = true
+                },
+                goToStep3: function() {
+                    this.currentStep = 3;
+                    this.tb2complete = true
+                },
+                prevStep: function() {
+                    this.currentStep = this.currentStep-1
+                }
+            },
+        });
+    </script>
+
+    <script src="{% static 'index.js' %}"></script>
+        <!--Similar properties-->
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

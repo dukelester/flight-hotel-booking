@@ -1,0 +1,406 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block content %}
+
+<body class="relative">
+    <div id="app">
+        <!--Nav Area-->
+
+
+       <h3></h3>
+
+
+
+        
+        <div class="progress-form px-10 lg:px-24 sm:px-10 md:px-10 pb-6 pt-10">
+                <form id="flightCheckoutForm" method="post" action="{% url 'book_flight' flightid  %}">{% csrf_token %}
+                    <input name="offer" type="hidden" value="{{ offer }}">
+                <div class="first">
+                    <div class="details px-4 py-2">
+                        <h4 class="text-xl font-bold mb-8" style="font-size: 14px;color:orangered">Your Flight details</h4>
+                        <div class="block space-y-2 mb-10">
+                            <h5 class="font-bold">Flight from {{offer.0firstFlightDepartureAirport}} to {{offer.0firstFlightArrivalAirport }}</h5>
+                           {% if offer.1firstFlightDepartureAirport %}
+                            <p style="text-align:center;font-size: 20px;color: #975a16"><strong> Roundtrip </strong> </p>
+                            {% endif %}
+
+                            {% if not offer.1firstFlightDepartureAirport %}
+                                    <p style="text-align:center;font-size: 20px;color: #975a16"><strong>One Way </strong> </p>
+                            {% endif %}
+
+                        </div>
+                        <div class="times block space-y-2">
+                            <div class="flex items-center justify-between">
+                                <p>Travelling time </p>
+                                <p>{{ offer.0firstFlightDepartureDate }} -- {{ offer.0firstFlightArrivalDate }} </p>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <h5 class="font-bold">{{ offer.0firstFlightDepartureAirport }} - {{offer.0firstFlightArrivalAirport }}</h5>
+                                <p>Total duration {{ offer.0FlightTotalDuration }}</p>
+                            </div>
+                             {% if offer.1firstFlightDepartureAirport %}
+
+
+                            <div class="flex items-center justify-between">
+                                <h5 class="font-bold">{{ offer.1firstFlightDepartureAirport }} - {{ offer.0firstFlightDepartureAirport }}</h5>
+                                <p>Total duration {{ offer.1FlightTotalDuration }}</p>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                        <hr class="bg-black h-px my-6">
+                        <div class="block space-y-2">
+                            <div class="flex items-center justify-between">
+                                <p>1 ticket</p>
+                                <h5 class="font-bold" style="font-size: 15px;">$ {{ offer.price }} </h5>
+                            </div>
+
+                        </div>
+                        <p class="my-8 text-sm" style="font-size: 14px;">By clicking "Confirm booking" you are agreeing to the airline's fare rules and SKYSWIFT's terms and conditions and privacy policy. NOTE: to offer this fare, SKYSWIFT might need up to one business day to issue the ticket. SKYSWIFT's Terms of use and Privacy Policy also apply.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <h5 class="text-lg font-bold" style="font-size: 14px;color:red">Total</h5>
+                            <h5 class="text-lg font-bold" style="font-size: 18px;color:red">$ {{ offer.price }}</h5>
+                        </div>
+                    </div>
+                    <div class="edits w-full">
+                        <div class="flex space-x-4">
+                            <img src="{{ offer.0firstFlightAirlineLogo }}" alt="" class="h-auto w-64 object-cover object-right">
+                            <div class="area">
+                                <h4 class="font-bold text-3xl">{{ offer.0firstFlightAirline }}</h4>
+
+                                <div class="flex items-center justify-between space-x-3">
+                                    <div class="flex items-center space-x-3"> 
+<!--                                        <span><i class="fas fa-map-marker"></i></span>-->
+                                        <h5 class="text-xl font-bold"></h5>
+                                    </div>
+                                    
+                                    <a href="#" class="text-blue-500">Show on map</a>
+                                </div>
+                                <div class="checks mt-4 space-y-3">
+
+                                    <h5 class="text-xl font-bold mt-4">FREE Cancellation</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="arrival">
+
+                            <h6 class="mb-2 font-medium">Almost done! Just fill in the *required info</h6>
+                        </div>
+                        <div class="form-sections mt-6">
+                            <div class="sect sect1 p-5 ">
+                                <div class="work font-bold">
+                                    <h5>Are you travelling for work</h5>
+                                    <div class="flex items-center space-x-12 mt-3">
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" value="Yes">
+                                            <h6 class="font-bold">Yes</h6>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" value="No">
+                                            <h6 class="font-bold">No</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="names mt-4">
+                                    <div class="flex space-x-8">
+                                        <div class="flex flex-col">
+                                            <label class="font-bold">First Name</label>
+                                            <input required type="text" name="firstName" placeholder="First Name" required id="first" onfocusout="validateFirstName()">
+                                            <span class="helper-txt"></span>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <label class="font-bold">Last Name*</label>
+                                            <input required type="text" name="lastName" placeholder="Last name" required id="last" onfocusout="validateLastName()">
+                                            <span class="helper-txt"></span>
+                                        </div>
+                                        <div class="flex flex-col mt-4">
+                                            <label class="font-bold">Date Of Birth *</label>
+                                            <input required name="dateOfBirth" type="date" placeholder="2000" class="max-w-sm">
+                                            <span class="helper-txt"></span>
+                                        </div>
+                                        <div class="flex flex-col mt-4">
+                                            <label class="font-bold">Gender *</label>
+                                            <input required name="gender" type="text" placeholder="Male/Female" class="max-w-sm">
+                                            <span class="helper-txt"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="email mt-4">
+                                    <div class="flex flex-col">
+                                        <label class="font-bold">Email Address*</label>
+                                        <input required type="email" name="emailAddress" placeholder="example.gmail.com" class=" max-w-sm" id="email" onfocusout="validateEmail()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <p class="mt-2">Confirmation email is sent to this address</p>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Confirm Email Address*</label>
+                                        <input required type="email" name="emailAddress" placeholder="example.gmail.com" class=" max-w-sm" id="confirmemail" onfocusout="validateConfirmEmail()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5 class=" my-6 text-xl font-bold">Choose your preferred payment methods</h5>
+
+                            <!--NEWLY ADDED FORM SECTIONS-->
+                            <div class="sect sect-2 p-5">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-8">
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Country Calling Code*</label>
+                                        <input required name="countryCallingCode" type="text" placeholder="+254" class="max-w-sm" id="countrycode" onfocusout="validatecountrycode()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Telephone (mobile number preffered)*</label>
+                                        <input required name="phonenumber" type="text" placeholder="+254" class="max-w-sm" id="phone" onfocusout="validatephone()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">deviceType(mobile )*</label>
+                                        <input required name="deviceType" type="text" placeholder="Mobile" class="max-w-sm" id="device" onfocusout="validatedevice()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Document Type(mobile number preffered)*</label>
+                                        <input required name="documentType" type="text" placeholder="ID/Passport" class="max-w-sm" id="doctype" onfocusout="validatedoctype()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Place of Birth *</label>
+                                        <input required name="birthPlace" type="text" placeholder="Kenya" class="max-w-sm" id="birthplace" onfocusout="validatebirthplace()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Place of Issuance *</label>
+                                        <input required name="issuanceLocation" type="text" placeholder="Kenya" class="max-w-sm" id="issueplace" onfocusout="validateissueplace()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Date of Issuance *</label>
+                                        <input required name="issuanceDate" type="date" placeholder="2000" class="max-w-sm" id="issuedate" onfocusout="validateissuedate()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Expiry Date *</label>
+                                        <input required name="expiryDate" type="date" placeholder="2000" class="max-w-sm" id="expiry" onfocusout="validateexpiry()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Card Number *</label>
+                                        <input required name="number" type="text" placeholder="123-897-5654-90" class="max-w-sm" id="cardno" onfocusout="validatecardno()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Issuance Country *</label>
+                                        <input required name="issuanceCountry" type="text" placeholder="Kenya" class="max-w-sm" id="issuecountry" onfocusout="validateissuecountry()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Validity Country *</label>
+                                        <input required name="validityCountry" type="text" placeholder="Kenya" class="max-w-sm" id="validitycountry" onfocusout="validatevaliditycountry()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Nationality *</label>
+                                        <input required name="nationality" type="text" placeholder="Kenyan" class="max-w-sm" id="nationality" onfocusout="validatenationality()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+
+                                    <div class="flex flex-col mt-4">
+                                        <label class="font-bold">Holder *</label>
+                                        <input required name="holder" type="text" placeholder="True" class="max-w-sm" id="holder" onfocusout="validateholder()">
+                                        <span class="helper-txt"></span>
+                                    </div>
+                                </div>
+                                <div class="flex-col space-y-0 mt-6">
+                                    <div class="flex items-center space-x-4">
+                                        <input type="checkbox">
+                                        <p>Yes, I want free paperless confirmation (recommended)</p>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <input type="checkbox">
+                                        <p>Yes, Sky-Swift can send me special promotions via text</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <form  method="post" action="">{% csrf_token %}
+                            <button type="submit" class="mt-8 py-4 px-8 text-white flex space-x-2" style="background-color:  #F06400;">
+                                <p>Book Now</p>
+<!--                                <input name="flight" value="{{ flight }}" type="hidden">-->
+                                <span><i class="fas fa-arrow-right"></i></span>
+                            </button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+        <!--Footer-->
+
+    <!--FORM VALIDATION SCRIPT-->
+    <script>
+        //Input fields
+        const firstName = document.getElementById("first");
+        const lastName = document.getElementById("last");
+        const email = document.getElementById("email");
+        const confirmemail = document.getElementById("confirmemail");
+        const countrycode = document.getElementById("countrycode");
+        const phone = document.getElementById("phone");
+        const device = document.getElementById("device");
+        const doctype = document.getElementById("doctype");
+        const birthPlace = document.getElementById("birthplace");
+        const issuePlace = document.getElementById("issueplace");
+        const issueDate = document.getElementById("issuedate");
+        const expiry = document.getElementById("expiry");
+        const cardNo = document.getElementById("cardno");
+        const issueCountry = document.getElementById("issuecountry");
+        const validityCountry = document.getElementById("validitycountry");
+        const nationality = document.getElementById("nationality");
+        const holder = document.getElementById("holder");
+        //Form
+        const form = document.getElementById("flightCheckoutForm");
+        //Validation colors
+        const red = '#F44336';
+        const green = '#4CAF50';
+
+        /*Handle form submission
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+        }) */
+
+
+        //Input Field validation Functions
+
+        function validateFirstName() {
+            if(checkIfEmpty(firstName)) return;
+            if(!checkIfOnlyLetters(firstName)) return;
+            return true;
+        }
+        function validateLastName() {
+            if(checkIfEmpty(lastName)) return;
+            if(!checkIfOnlyLetters(lastName)) return;
+            return true;
+        }
+        function validateEmail() {
+            if(checkIfEmpty(email)) return;
+            if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value)) {
+                setValid(email);
+            } else {
+                setInvalid(email, `Email must have prorper format.`);    
+            }
+            return true;
+        }
+        function validateConfirmEmail() {
+            if(checkIfEmpty(confirmemail)) return;
+            if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value)) {
+                setValid(email);
+            } else {
+                setInvalid(email, `Email must have prorper format.`);    
+            }
+            //see if passwords match
+            if(email.value !== confirmemail.value) {
+                setInvalid(confirmemail, `Both emails must match`);
+                return;
+            }
+            else {
+                setValid(confirmemail);
+            }
+            return true;
+        }
+        
+        function validatecountrycode() {
+            if(checkIfEmpty(countrycode)) return;
+        }
+        function validatephone() {
+            if(checkIfEmpty(phone)) return;
+        }
+        function validatedevice() {
+            if(checkIfEmpty(device)) return;
+        }
+        function validatedoctype() {
+            if(checkIfEmpty(doctype)) return;
+        }
+        function validatebirthplace() {
+            if(checkIfEmpty(birthPlace)) return;
+        }
+        function validateissueplace() {
+            if(checkIfEmpty(issuePlace)) return;
+        }
+        function validateissuedate() {
+            if(checkIfEmpty(issueDate)) return;
+        }
+        
+        function validateexpiry() {
+            if(checkIfEmpty(expiry)) return;
+        }
+        function validatecardno() {
+            if(checkIfEmpty(cardNo)) return;
+            var cardreg = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+            if(cardNo.value.match(cardreg)) {
+                setValid(cardNo);
+            } else {
+                setInvalid(cardNo, `Not a valid Visa credit card number!`); 
+            }
+        }
+        function validateissuecountry() {
+            if(checkIfEmpty(issueCountry)) return;
+        }
+        function validatevaliditycountry() {
+            if(checkIfEmpty(validityCountry)) return;
+        }
+        
+        function validatenationality() {
+            if(checkIfEmpty(nationality)) return;
+        }
+        function validateholder() {
+            if(checkIfEmpty(holder)) return;
+        }
+        //Utility functions
+
+        function checkIfEmpty(field) {
+            if(isEmpty(field.value.trim())) {
+                setInvalid(field, `Field must not be empty.`);
+                return true;
+            } else {
+                setValid(field);
+                return false;
+            }
+        }
+        function checkIfOnlyLetters(field) {
+            if(/^[a-zA-Z ]+$/.test(field.value)) {
+                setValid(field);
+                return true;
+            } else {
+                setInvalid(field, `${field.name} must only contain letters.`);
+                return false;
+            }
+        }
+        function isEmpty(value) {
+            if(value === '') return true;
+            return false;
+        }
+        function setInvalid(field, message) {
+            field.className = 'invalid';
+            field.nextElementSibling.innerHTML = message;
+            field.nextElementSibling.style.color = red;
+        }
+        function setValid(field) {
+            field.className = 'valid';
+            field.nextElementSibling.innerHTML = '';
+            //field.nextElementSibling.style.color = green;
+        }
+        
+    </script>
+</body>
+{%  endblock %}

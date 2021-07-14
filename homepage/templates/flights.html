@@ -1,0 +1,221 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="flights-panel px-10 lg:px-24 sm:px-10 md:px-10 flex flex-col justify-center">
+
+        <form class="flex mt-8 flex-col" method="post" action="flightresultspage">{% csrf_token %}
+            <div class="dropdowns flex mb-3 mt-5 lg:space-x-5 md:space-x-3 sm:space-x-0 justify-start">
+                <div class="drops flex items-center space-x-0">
+                    <select>
+                        <option value="round" selected>Round-trip</option>
+                        <option value="one">One-way</option>
+                        <option value="multi">Multi-city</option>
+                    </select>
+                    <span><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="drops flex items-center space-x-0">
+                    <select name="age">
+                        <option value="1">Adults(18-64)</option>
+                        <option value="">Seniors(65+)</option>
+                        <option value="">Youth(12-17)</option>
+                        <option value="">Child(2-11)</option>
+                        <option value="">Toddler in own seat(under 2)</option>
+                        <option value="">infant on lap(under 2)</option>
+                    </select>
+                    <span><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="drops flex items-center space-x-0">
+                    <select>
+                        <option value="economy">Economy</option>
+                        <option value="">Premium Economy</option>
+                        <option value="">Business</option>
+                        <option value="">First</option>
+                        <option value="">Multiple</option>
+                    </select>
+                    <span><i class="fas fa-chevron-down"></i></span>
+                </div>
+            </div>
+
+            <div class="bottom-form flex mt-8">
+                <div class="destinations flex space-x-2 items-center">
+                    <div class="wrapper h-auto w-auto block relative">
+                        <div class="flex space-x-2 ml-2">
+                            <img src="{% static 'images/airplane copy.svg' %}" alt="">
+                            <input name="origin" type="text" placeholder="From?" id="searchField" list="datalist-data" class="w-full">
+                        </div>
+                        <datalist class="h-8" id="datalist-data"></datalist>
+                    </div>
+
+                    <span class="px-1 flex flex-col items-center justify-center">
+                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+
+                    <div class="wrapper h-auto w-auto block relative">
+                        <div class="flex space-x-2">
+                            <img src="{% static 'images/airplane copy.svg' %}" alt="">
+                            <input name="destination" type="text" placeholder="To?" id="search-to" list="datalist-data">
+                        </div>
+                        <datalist class="w-full border border-gray-200 mt-8 h-12" id="datalist-data"></datalist>
+                    </div>
+                </div>
+                <div class="dates flex items-center px-2">
+                    <div class="flex items-center space-x-2">
+                        <img src="{% static 'images/calendar-alt-regular.svg' %}" alt="">
+                        <input  name="departuredate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Depart">
+                        <span class="flex space-x-2">
+                            <i class="fas fa-chevron-left"></i>
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </div>
+                    <div class="spacer mx-5"></div>
+                    <div class="flex items-center space-x-2">
+                        <img src="{% static 'images/calendar-alt-regular.svg' %}" alt="">
+                        <input name="returndate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Arrival">
+                        <span class="flex space-x-2 ">
+                            <i class="fas fa-chevron-left"></i>
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </div>
+                </div>
+                <button>Search</button>
+            </div>
+        </form>
+    </div>
+    <input type="hidden" id="myVar" name="variable" value="{{ ourlist }}">
+
+
+    <!--Footer-->
+
+    <div class="bottom-bar"></div>
+
+
+
+
+<script>
+
+
+const searchFieid = document.querySelector("#searchField");
+
+// app-table const tableOutput = document.querySelector(".table-output"): tableoutput.style.display = "none";
+
+searchField.addEventListener("keyup", (e)=> {
+    const searchValue = e.target.value;
+
+    if (searchValue.trim().length > 0) {
+        console.log("searchValue", searchValue);
+
+
+    }
+
+    fetch("/flightsearch", {
+
+        body: JSON.stringify({searchText: searchValue}),
+        method: "POST",
+
+    })
+
+        .then((res)=> res.json())
+        .then((data) => {
+
+
+
+
+            let citylist = data.citylist;
+
+
+
+
+
+
+
+               $.each(citylist, function(key,value) {
+                    $("#datalist-data").append(`<option class="px-3 py-2 border-b border-gray-200">${value.cityname}, ${value.citycode}</option>`);
+                    console.log(value.cityname);
+                });
+
+
+
+        });
+
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<script>-->
+<!--$(document).ready(function(){-->
+<!-- $.ajaxSetup({ cache: false });-->
+<!-- $('#search-to').keyup(function(){-->
+<!--  $('#result').html('');-->
+<!--  $('#state').val('');-->
+<!--  var searchField = $('#search-to').val();-->
+<!--  window.console.log(searchField)-->
+<!--  -->
+<!--  $.getJSON('data.json', function(data) {-->
+<!--   $.each(data, function(key, value){-->
+<!--    if (value.name.search(expression) != -1 || value.location.search(expression) != -1)-->
+<!--    {-->
+<!--     $('#result').append('<li class="list-group-item link-class"><img src="'+value.image+'" height="40" width="40" class="img-thumbnail" /> '+value.name+' | <span class="text-muted">'+value.location+'</span></li>');-->
+<!--    }-->
+<!--   });-->
+<!--  });-->
+<!-- });-->
+
+<!-- -->
+<!--});-->
+<!--</script>-->
+
+    <!--Scripts-->
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="{% static 'js/jquery.steps.min.js' %}"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="{% static 'js/vue.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+
+
+    <!--New js file for the auto-complete search feature-->
+    <script src="{% static 'js/form.js' %}"></script>
+
+    <script>
+
+
+        $(document).ready(function() {
+    /* Flights page auto suggest form */
+    //let states = [ { "cityname": "PHOENIX", "citycode": "PHX", "countryname": "UNITED STATES OF AMERICA", "countrycode": "US", "regioncode": "NAMER" }, { "cityname": "PHOENIX", "citycode": "PHX", "countryname": "UNITED STATES OF AMERICA", "countrycode": "US", "regioncode": "NAMER" }, { "cityname": "MINNEAPOLIS/ST PAUL", "citycode": "MSP", "countryname": "UNITED STATES OF AMERICA", "countrycode": "US", "regioncode": "NAMER" }, { "cityname": "MINNEAPOLIS/ST PAUL", "citycode": "MSP", "countryname": "UNITED STATES OF AMERICA", "countrycode": "US", "regioncode": "NAMER" }, { "cityname": "PHILADELPHIA", "citycode": "PHL", "countryname": "UNITED STATES OF AMERICA", "countrycode": "US", "regioncode": "NAMER" }, { "cityname": "PHILADELPHIA", "citycode": "PHL", "countryname": "UNITED STATES OF AMERICA", "countrycode": "US", "regioncode": "NAMER" }, { "cityname": "PALMA DE MALLORCA", "citycode": "PMI", "countryname": "SPAIN", "countrycode": "ES", "regioncode": "EUROP" }, { "cityname": "PALMA DE MALLORCA", "citycode": "PMI", "countryname": "SPAIN", "countrycode": "ES", "regioncode": "EUROP" }, { "cityname": "PORTLAND", "citycode": "PDX", "countryname": "UNITED STATES OF AMERICA", "countrycode": "US", "regioncode": "NAMER" }, { "cityname": "PORTLAND", "citycode": "PDX", "countryname": "UNITED STATES OF AMERICA", "countrycode": "US", "regioncode": "NAMER" }];
+
+    //Get data from server url and add them to the list attribute
+            $.get("/data", function(data, status) {
+                let states = data.ourlist;
+                // console.log(data.ourlist);
+                $.each(states, function(key,value) {
+                    $("#datalist-data").append(`<option class="px-3 py-2 border-b border-gray-200" value="${value.cityname}">`);
+                    // console.log(value.cityname);
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+
+
+

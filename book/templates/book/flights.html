@@ -1,0 +1,289 @@
+
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block content %}
+
+<body style="font-size:20px">
+
+
+
+    <!--Nav Area-->
+    <div class="flights-panel px-10 lg:px-24 sm:px-10 md:px-10 flex flex-col justify-center">
+        <h3>Where to next, Maxwell?</h3>
+        <form action="" method="POST"    id="form_id" class="flex mt-8 flex-col"> {% csrf_token %}
+            <div class="dropdowns flex mb-3 mt-5 lg:space-x-5 md:space-x-3 sm:space-x-0 justify-start">
+            </div>
+
+            <div class="bottom-form flex items-end mt-8">
+                <div class="destinations flex space-x-2 items-center">
+                    <div class="wrapper h-auto w-auto block relative">
+                        <div class="autocomplete relative flex space-x-2 ml-2">
+                            <img src="{% static 'images/airplane copy.svg' %}" alt="">
+                            <input type="text" name="Origin" id="inputOrigin"
+                             class="form-control" placeholder="From?"  required autofocus>
+                        </div>
+                    </div>
+
+                    <span class="px-1 icon-area flex flex-col items-center justify-center">
+                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+
+                    <div class="wrapper h-auto w-auto block relative">
+                        <div class="flex space-x-2">
+                            <img src="{% static 'images/airplane copy.svg' %}" alt="">
+                            <input  type="text" name="Destination" id="inputDestination"
+                             class="form-control"placeholder="To?"  required autofocus>
+                        </div>
+                    </div>
+                    <div class="wrapper h-full flex items-center px-3 w-auto block relative border-l-2 border-orange-600">
+                        <input type="number" name="Adults" id="idAdults"
+                             class="form-control" placeholder="No of Adults">
+                    </div>
+                </div>
+                <div class="dates flex items-center px-2">
+                    <div class="flex items-center space-x-2">
+                        <img src="{% static 'images/calendar-alt-regular.svg' %}" alt="">
+                        <input type="date" name="Departuredate" id="idDeparturedate"
+                             class="form-control"  placeholder="Depart" min="2013-12-25" required>
+                        <span class="flex space-x-2">
+
+                        </span>
+                    </div>
+                    <div class="spacer mx-5"></div>
+                    <div class="flex items-center space-x-2">
+                        <img src="{% static 'images/calendar-alt-regular.svg' %}" alt="">
+                        <input type="date" name="Returndate" id="idReturndate"
+                             class="form-control" placeholder="Return" min="2013-12-25"  >
+                        <span class="flex space-x-2 ">
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <button class="mt-5 max-w-sm">Search</button>
+        </form>
+    </div>
+
+    <!--Results for search-->
+    <div class="flight-results px-10 lg:px-24 sm:px-10 md:px-10 grid">
+
+        <!--Filter section-->
+        <div class="filter px-4 py-8 mt-5">
+            <h4>Filter by:</h4>
+            <div class="filter-class">
+                <h4 class=" my-3">Stops</h4>
+                <div class="checks flex items-center space-x-4">
+                    <input type="checkbox">
+                    <p>Nonstop</p>
+                    <p class="count">36</p>
+                </div>
+            </div>
+            <div class="filter-class space-y-2">
+                <h4 class=" my-3">Popular Airlines</h4>
+                <div class="checks flex items-center justify-between space-x-4">
+                    <input type="checkbox">
+                    <p class="flex-1">AirFrance</p>
+                    <p class="count">36</p>
+                </div>
+                <div class="checks flex items-center justify-between space-x-4">
+                    <input type="checkbox">
+                    <p class="flex-1">British Airways</p>
+                    <p class="count"></p>
+                </div>
+                <div class="checks flex items-center justify-between space-x-4">
+                    <input type="checkbox">
+                    <p class="flex-1">Easy Jet</p>
+                    <p class="count">36</p>
+                </div>
+                <div class="checks flex items-center justify-between space-x-4">
+                    <input type="checkbox">
+                    <p class="flex-1">Egypt Air</p>
+                    <p class="count">36</p>
+                </div>
+                <div class="checks flex items-center justify-between space-x-4">
+                    <input type="checkbox">
+                    <p class="flex-1">Emirates</p>
+                    <p class="count">36</p>
+                </div>
+                <div class="checks flex items-center justify-between space-x-4">
+                    <input type="checkbox">
+                    <p class="flex-1">Ethiopian Air</p>
+                    <p class="count">36</p>
+                </div>
+            </div>
+        </div>
+
+    {% for offer in response %}
+        {% if offer == offer %}
+
+        {% if offer.0firstFlightAirlineLogo %}
+
+        <div class="flight-result-items mt-5">
+
+
+
+            <div class="flight-result-item flex justify-between items-center p-5 mb-4 space-x-3">
+                        <!--Changed to fit multiple search results-->
+                        <div class="flights-samples grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="panel-item flex flex-col justify-center items-start">
+                                <img src="{{ offer.0firstFlightAirlineLogo }}" alt="">
+                                <h4><strong>Departure Flight </strong></h4>
+                                <div class="details block space-y-2 flex-1">
+                                    <h3  class="font-bold text-sm" style="font-size: 14px;">{{ offer.0firstFlightAirline }}</h3>
+                                    <h6 class="text-blue-500 font-semibold text-sm" style="font-size: 14px;">From {{ offer.0firstFlightDepartureAirport }} - To {{ offer.0firstFlightArrivalAirport }}</h6>
+                                    <h6 class="font-bold text-sm" style="font-size: 14px;">Departure {{ offer.0firstFlightDepartureDate }} -  Arrival {{ offer.0firstFlightArrivalDate }}</h6>
+                                    <h5><strong> Total duration : {{ offer.0FlightTotalDuration }}</strong></h5>
+        <!--                            <p>1 Stop</p>-->
+                                </div>
+                            </div>
+                            {% if offer.0secondFlightDepartureAirport %}
+
+                                    <div class="panel-item flex flex-col justify-center items-start">
+                                        <img src="{{ offer.0secondFlightAirlineLogo }}" alt="">
+                                        <div class="details block space-y-2 flex-1">
+                                            <h3 class="text-lg mt-2 font-semibold" style="font-size: 14px;">{{ offer.0secondFlightAirline }}</h3>
+                                            <h6 class="text-blue-500 font-semibold text-sm" style="font-size: 14px;">{{ offer.0secondFlightDepartureAirport }} - {{ offer.0secondFlightArrivalAirport }}</h6>
+                                            <h6 class="font-bold text-sm" style="font-size: 14px;">{{ offer.0secondFlightDepartureDate }}- {{ offer.0secondFlightArrivalDate }}</h6>
+
+                                            <p> Stop Time {{ offer.0stop_time }}</p>
+                                        </div>
+                                    </div>
+                            {% endif %}
+
+
+                            <div class="panel-item flex flex-col justify-center items-start">
+                                <img src="{{ offer.1firstFlightAirlineLogo }}" alt="">
+                               <h4><strong>Return Flight </strong></h4>
+                                <div class="details block space-y-2 flex-1">
+                                    <h3 class="text-lg mt-2 font-semibold" style="font-size: 14px;">{{ offer.1firstFlightAirline }}</h3>
+                                    <h6 class="text-blue-500 font-semibold text-sm" style="font-size: 14px;">{{ offer.1firstFlightDepartureAirport }} - {{ offer.1firstFlightArrivalAirport }}</h6>
+                                    <h6 class="font-bold text-sm" style="font-size: 14px;">{{ offer.1firstFlightDepartureDate }} - {{ offer.1firstFlightArrivalDate }}</h6>
+                                    <h5><strong> Total duration : {{ offer.1FlightTotalDuration }}</strong></h5>
+                                    <p>1 Stop</p>
+                                </div>
+                            </div>
+
+                            {% if offer.1secondFlightDepartureAirport %}
+
+                                    <div class="panel-item flex flex-col justify-center items-start">
+                                        <img src="{{ offer.1secondFlightAirlineLogo }}" alt="">
+                                        <div class="details block space-y-2 flex-1">
+                                            <h3 class="text-lg mt-2 font-semibold" style="font-size: 14px;">{{ offer.1secondFlightAirline }}</h3>
+                                            <h6 class="text-blue-500 font-semibold text-sm" style="font-size: 14px;" >{{ offer.1secondFlightDepartureAirport }} - {{ offer.1secondFlightArrivalAirport }}</h6>
+                                            <h6 class="font-bold text-sm" style="font-size: 14px;">{{ offer.1secondFlightDepartureDate }} - {{ offer.1secondFlightArrivalDate }}</h6>
+
+                                            <p>Stop {{ offer.1stop_time }}</p>
+                                        </div>
+                                    </div>
+                            {% endif %}
+                        </div>
+                        <!--/Changed to fit multiple search results-->
+                        <div class="details">
+                            <p>Adults {{ adults }}</p>
+                            <h2 class="uppercase font-bold text-xl" style="font-size: 20px;color: red">$  {{ offer.price }}</h2>
+                            <p class="mb-3">Tax Inclusive</p>
+
+                            <form method="post" action="{% url 'viewflight' offer.id %}">{% csrf_token %}
+                            <input type="submit" name="View details" class="button"></input>
+                                <input name="offer" type="hidden" value="{{ offer }}">
+
+                                </form>
+
+                        </div>
+                    </div>
+        {% endif %}
+              {% endif %}
+    {% endfor %}
+</div>
+    </div>
+
+
+
+    <div class="bottom-bar"></div>
+
+    <!--Scripts-->
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="{% static 'js/jquery.steps.min.js' %}"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="{% static 'js/vue.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+
+    <!--DatePicker plugin-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            $("#txtdate").datepicker({
+                minDate: 0
+            });
+            $("#txtdate2").datepicker({
+                minDate: 0
+            });
+        });
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $("#form_id").on("submit", function (e) {
+        e.preventDefault(); //stop submit event
+        var self = $(this);
+        var originGiven = $("#inputOrigin").val();
+        $("#inputOrigin").val(originGiven.slice(0,3));
+        var destinationGiven = $("#inputDestination").val();
+        $("#inputDestination").val(destinationGiven.slice(0,3));
+        $("#form_id").off("submit");
+        self.submit();
+    });
+    </script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+</script>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#inputOrigin").autocomplete({
+                source: "{% url 'origin_airport_search'%}",
+                minLength: 1,
+                delay: 10,
+            });
+        });
+    </script>
+    <script>
+    $(document).ready(function () {
+        $("#inputDestination").autocomplete({
+            source: "{% url 'destination_airport_search'%}",
+            minLength: 1,
+            delay: 10,
+        });
+    });
+</script>
+{%  endblock %}
