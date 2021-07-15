@@ -32,7 +32,7 @@ urlpatterns = [
     path('', include('userprofile.urls')),
     path('', include('authentication.urls')),
     path('', include('book.urls')),
-    path('', include('flocash.urls')),
+    #path('', include('flocash.urls')),
 
 ]
 
