@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 # ALLOWED_HOSTS = ['52.188.149.113', 'ab0be84fbda5.ngrok.io','localhost','127.0.0.1', 'sky-swift.com', 'www.sky-swift.com']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['hotel-flight-booking-engine.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # 'django_filters',
     'book',
     'flocash',
+    'rest_framework',
 
 ]
 
