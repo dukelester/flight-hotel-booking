@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     # 'django_email_verification',
     # 'django_filters',
     'book',
-    'flocash',
+    #'flocash',
     'rest_framework',
 
 ]
